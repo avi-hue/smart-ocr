@@ -1,0 +1,58 @@
+2026-06-04 21:19:52 | INFO     | __main__:107 — Found 1 PDF file(s) to process
+2026-06-04 21:19:52 | INFO     | __main__:63 — =======================================================
+2026-06-04 21:19:52 | INFO     | __main__:64 — Processing: sample_invoice.pdf
+2026-06-04 21:19:52 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: sample_invoice.pdf
+2026-06-04 21:19:52 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     845 chars → TEXT
+2026-06-04 21:19:52 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-04 21:19:52 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in sample_invoice.pdf
+2026-06-04 21:19:52 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:   845 chars, 1 table(s)
+2026-06-04 21:19:52 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   invoice_number       → INV-2024-00842
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   invoice_date         → 15/11/2024
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   due_date             → 15/12/2024
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   purchase_order       → Number
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_name          → Bill To:
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_gstin         → 27AABCU9603R1ZX
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_pan           → AABCU9603R
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   buyer_name           → Acme Supplies Pvt. Ltd. XYZ Enterprises Ltd.
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   subtotal             → (not found)
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   tax_amount           → (not found)
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   total_amount         → (not found)
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:224 —   currency             → (not found)
+2026-06-04 21:19:52 | DEBUG    | src.ocr_engine.field_extractor:231 —   line_items          → 4 row(s)
+2026-06-04 21:19:52 | INFO     | src.ocr_engine.field_extractor:236 — Field extraction complete: 8/12 fields found
+2026-06-04 21:19:52 | INFO     | src.data_cleaner.normalizer:133 — Normalizing invoice: sample_invoice.pdf
+2026-06-04 21:19:52 | INFO     | src.data_cleaner.normalizer:154 — Normalization complete
+2026-06-04 21:19:52 | INFO     | __main__:119 — =======================================================
+2026-06-04 21:19:52 | INFO     | __main__:120 — Pipeline complete: 1/1 invoices extracted
+2026-06-04 21:19:52 | INFO     | src.excel_exporter.exporter:141 — Exporting 1 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-04 21:19:52 | INFO     | src.excel_exporter.exporter:190 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-04 21:20:14 | INFO     | __main__:112 — Found 1 PDF file(s) to process
+2026-06-04 21:20:14 | INFO     | __main__:68 — =======================================================
+2026-06-04 21:20:14 | INFO     | __main__:69 — Processing: sample_invoice.pdf
+2026-06-04 21:20:14 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: sample_invoice.pdf
+2026-06-04 21:20:14 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     845 chars → TEXT
+2026-06-04 21:20:14 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-04 21:20:14 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in sample_invoice.pdf
+2026-06-04 21:20:14 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:   845 chars, 1 table(s)
+2026-06-04 21:20:14 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   invoice_number       → INV-2024-00842
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   invoice_date         → 15/11/2024
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   due_date             → 15/12/2024
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   purchase_order       → Number
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_name          → Bill To:
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_gstin         → 27AABCU9603R1ZX
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   vendor_pan           → AABCU9603R
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   buyer_name           → Acme Supplies Pvt. Ltd. XYZ Enterprises Ltd.
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   subtotal             → (not found)
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   tax_amount           → (not found)
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   total_amount         → (not found)
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:224 —   currency             → (not found)
+2026-06-04 21:20:14 | DEBUG    | src.ocr_engine.field_extractor:231 —   line_items          → 4 row(s)
+2026-06-04 21:20:14 | INFO     | src.ocr_engine.field_extractor:236 — Field extraction complete: 8/12 fields found
+2026-06-04 21:20:14 | INFO     | src.data_cleaner.normalizer:133 — Normalizing invoice: sample_invoice.pdf
+2026-06-04 21:20:14 | INFO     | src.data_cleaner.normalizer:154 — Normalization complete
+2026-06-04 21:20:14 | INFO     | __main__:124 — =======================================================
+2026-06-04 21:20:14 | INFO     | __main__:125 — Pipeline complete: 1/1 invoices extracted
+2026-06-04 21:20:14 | INFO     | src.excel_exporter.exporter:141 — Exporting 1 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-04 21:20:14 | INFO     | src.excel_exporter.exporter:190 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx

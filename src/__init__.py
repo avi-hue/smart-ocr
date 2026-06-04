@@ -1,0 +1,1 @@
+# Smart-OCR package root

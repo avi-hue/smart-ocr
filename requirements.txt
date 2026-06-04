@@ -1,0 +1,23 @@
+# ─── PDF Processing ───────────────────────────────────────────────────────────
+pymupdf                   # fitz: fast PDF text extraction (Python 3.13 compatible)
+pdfplumber                # layout-aware PDF parsing (tables, columns)
+
+# ─── OCR Engine ───────────────────────────────────────────────────────────────
+pytesseract               # Python wrapper for Tesseract OCR
+
+# ─── Image Processing ─────────────────────────────────────────────────────────
+opencv-python             # image preprocessing (deskew, threshold, denoise)
+Pillow                    # image I/O and format conversions
+
+# ─── Data Cleaning & Processing ───────────────────────────────────────────────
+pandas                    # tabular data manipulation
+numpy                     # numerical operations (used by OpenCV/Pandas)
+
+# ─── Excel Export ─────────────────────────────────────────────────────────────
+openpyxl                  # read/write .xlsx files
+XlsxWriter                # advanced Excel formatting & charts
+
+# ─── Utilities ────────────────────────────────────────────────────────────────
+python-dotenv             # load .env config (e.g. Tesseract path)
+loguru                    # structured logging
+tqdm                      # progress bars for batch processing
