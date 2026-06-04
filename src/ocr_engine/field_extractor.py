@@ -37,9 +37,7 @@ class LineItem:
     description: Optional[str] = None
     hsn_sac_code: Optional[str] = None
     quantity: Optional[str] = None
-    unit: Optional[str] = None
     unit_price: Optional[str] = None
-    discount: Optional[str] = None
     tax_rate: Optional[str] = None
     tax_amount: Optional[str] = None
     line_total: Optional[str] = None
@@ -142,22 +140,24 @@ def _extract_line_items_from_tables(
         # Build column index map
         col_map: Dict[str, int] = {}
         for idx, header in enumerate(header_row):
-            if "description" in header or "item" in header or "particular" in header:
+            if "sr" in header or header in ("no", "s.no", "#"):
+                col_map["sr_no"] = idx
+            elif "description" in header or "item" in header or "particular" in header:
                 col_map["description"] = idx
             elif "hsn" in header or "sac" in header:
                 col_map["hsn_sac_code"] = idx
             elif "qty" in header or "quantity" in header:
                 col_map["quantity"] = idx
-            elif "unit price" in header or "rate" in header:
+            elif "tax" in header and ("rate" in header or "%" in header):
+                col_map["tax_rate"] = idx
+            elif "unit" in header and "price" in header:
                 col_map["unit_price"] = idx
-            elif "discount" in header:
-                col_map["discount"] = idx
-            elif "tax" in header and "amount" in header:
+            elif "rate" in header and "tax" not in header:
+                col_map["unit_price"] = idx
+            elif "tax" in header and ("amt" in header or "amount" in header):
                 col_map["tax_amount"] = idx
-            elif "total" in header or "amount" in header:
+            elif "total" in header or "amount" in header or "amt" in header:
                 col_map["line_total"] = idx
-            elif "sr" in header or "no" in header or "s.no" in header:
-                col_map["sr_no"] = idx
 
         def cell(row, key):
             idx = col_map.get(key)
@@ -171,18 +171,78 @@ def _extract_line_items_from_tables(
             if not any(row):
                 continue
             items.append(LineItem(
-                sr_no       = cell(row, "sr_no"),
-                description = cell(row, "description"),
-                hsn_sac_code= cell(row, "hsn_sac_code"),
-                quantity    = cell(row, "quantity"),
-                unit_price  = cell(row, "unit_price"),
-                discount    = cell(row, "discount"),
-                tax_amount  = cell(row, "tax_amount"),
-                line_total  = cell(row, "line_total"),
+                sr_no        = cell(row, "sr_no"),
+                description  = cell(row, "description"),
+                hsn_sac_code = cell(row, "hsn_sac_code"),
+                quantity     = cell(row, "quantity"),
+                unit_price   = cell(row, "unit_price"),
+                tax_rate     = cell(row, "tax_rate"),
+                tax_amount   = cell(row, "tax_amount"),
+                line_total   = cell(row, "line_total"),
             ))
         break  # use the first matching table
 
     return items
+
+def _extract_party_info(text: str) -> dict:
+    """
+    Parse vendor and buyer name/address from a columnar 'Bill From / Bill To' block.
+
+    The layout looks like (with many spaces between columns):
+        Bill From:                      Bill To:
+        Globex Inc                      Daily Planet
+        123 Vendor St, City, ST 12345   456 Buyer Ave, Town, ST 67890
+        GSTIN: 27AABCU9603R1ZX PAN: ABCDE1234F
+
+    Strategy: Find the 'Bill From:'/'Bill To:' header line, then read the
+    subsequent lines. Split each line at the midpoint of the two header labels
+    to reliably separate left (vendor) and right (buyer) columns.
+    """
+    result = {"vendor_name": None, "vendor_address": None,
+              "buyer_name": None,  "buyer_address": None}
+
+    # Find the header line containing both labels
+    header_match = re.search(
+        r"(?i)([ \t]*)(bill\s+from:)([ \t]*)(bill\s+to:)([ \t]*)\n",
+        text
+    )
+    if not header_match:
+        # Fallback: try simple single-column patterns
+        m = re.search(r"(?i)(?:from|vendor|seller)[:\s]+([^\n]+)", text)
+        if m: result["vendor_name"] = m.group(1).strip()
+        m = re.search(r"(?i)(?:bill\s+to|sold\s+to|customer|buyer)[:\s]+([^\n]+)", text)
+        if m: result["buyer_name"] = m.group(1).strip()
+        return result
+
+    # Calculate the column split point: position of 'Bill To:' in the header
+    header_line = header_match.group(0)
+    split_pos = header_line.lower().index("bill to:")
+
+    # Grab up to 5 lines after the header
+    rest_of_text = text[header_match.end():]
+    lines = rest_of_text.split("\n")[:6]
+
+    left_lines = []
+    right_lines = []
+
+    for line in lines:
+        left_part  = line[:split_pos].strip()
+        right_part = line[split_pos:].strip()
+        # Skip lines that only contain GSTIN/PAN (keep for gstin/pan regex)
+        if left_part and not re.match(r"(?i)^(gstin|pan)[:\s]", left_part):
+            left_lines.append(left_part)
+        if right_part and not re.match(r"(?i)^(gstin|pan)[:\s]", right_part):
+            right_lines.append(right_part)
+
+    if left_lines:
+        result["vendor_name"]    = left_lines[0]
+        result["vendor_address"] = left_lines[1] if len(left_lines) > 1 else None
+    if right_lines:
+        result["buyer_name"]    = right_lines[0]
+        result["buyer_address"] = right_lines[1] if len(right_lines) > 1 else None
+
+    return result
+
 
 
 def extract_invoice_fields(
@@ -205,13 +265,22 @@ def extract_invoice_fields(
     invoice = ExtractedInvoice(source_file=source_file)
     confidence: Dict[str, float] = {}
 
+    # ── Party fields (columnar extraction) ───────────────────────────────────
+    party = _extract_party_info(text)
+    invoice.vendor_name    = party["vendor_name"]
+    invoice.vendor_address = party["vendor_address"]
+    invoice.buyer_name     = party["buyer_name"]
+    invoice.buyer_address  = party["buyer_address"]
+    for k in ("vendor_name", "vendor_address", "buyer_name", "buyer_address"):
+        confidence[k] = 1.0 if party[k] else 0.0
+        log.debug("  {:20} → {}", k, party[k] or "(not found)")
+
     # ── Scalar fields via regex ──────────────────────────────────────────────
     field_map = {f.name: f for f in ALL_FIELDS}
 
     scalar_attrs = [
         "invoice_number", "invoice_date", "due_date", "purchase_order",
-        "vendor_name", "vendor_gstin", "vendor_pan",
-        "buyer_name",
+        "vendor_gstin", "vendor_pan",
         "subtotal", "tax_amount", "total_amount", "currency",
     ]
 
@@ -221,7 +290,7 @@ def extract_invoice_fields(
             value = _try_patterns(text, inv_field)
             setattr(invoice, attr, value)
             confidence[attr] = 1.0 if value else 0.0
-            log.debug("  {:<20} → {}", attr, value or "(not found)")
+            log.debug("  {:20} → {}", attr, value or "(not found)")
         else:
             confidence[attr] = 0.0
 

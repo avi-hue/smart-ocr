@@ -40,22 +40,29 @@ from src.utils.logger import get_logger
 log = get_logger(__name__)
 
 
-def collect_pdfs(input_path: Path) -> list[Path]:
-    """Collect all PDF files from a path (file or directory)."""
-    if input_path.is_file():
-        if input_path.suffix.lower() != ".pdf":
-            log.error("Input file is not a PDF: {}", input_path)
-            sys.exit(1)
-        return [input_path]
-    elif input_path.is_dir():
-        pdfs = sorted(input_path.glob("**/*.pdf"))
-        if not pdfs:
-            log.error("No PDF files found in: {}", input_path)
-            sys.exit(1)
-        return pdfs
-    else:
-        log.error("Input path does not exist: {}", input_path)
+def collect_pdfs(input_paths: list[Path]) -> list[Path]:
+    """Collect all PDF files from a list of paths (files or directories)."""
+    pdfs = []
+    for path in input_paths:
+        if path.is_file():
+            if path.suffix.lower() != ".pdf":
+                log.warning("Input file is not a PDF, skipping: {}", path)
+                continue
+            pdfs.append(path)
+        elif path.is_dir():
+            dir_pdfs = sorted(path.glob("**/*.pdf"))
+            if not dir_pdfs:
+                log.warning("No PDF files found in directory: {}", path)
+            pdfs.extend(dir_pdfs)
+        else:
+            log.warning("Input path does not exist: {}", path)
+            
+    if not pdfs:
+        log.error("No valid PDF files found to process.")
         sys.exit(1)
+        
+    # Remove duplicates if any (while preserving order)
+    return list(dict.fromkeys(pdfs))
 
 
 def process_pdf(pdf_path: Path) -> ExtractedInvoice | None:
@@ -106,9 +113,9 @@ def process_pdf(pdf_path: Path) -> ExtractedInvoice | None:
     return invoice
 
 
-def run(input_path: Path, output_path: Path | None) -> None:
+def run(input_paths: list[Path], output_path: Path | None) -> None:
     """Main pipeline runner."""
-    pdfs = collect_pdfs(input_path)
+    pdfs = collect_pdfs(input_paths)
     log.info("Found {} PDF file(s) to process", len(pdfs))
 
     invoices: list[ExtractedInvoice] = []
@@ -153,8 +160,9 @@ def parse_args():
     parser.add_argument(
         "--input", "-i",
         required=True,
+        nargs="+",
         type=Path,
-        help="Path to a single PDF file or a directory containing PDF files",
+        help="Path to one or more PDF files or directories containing PDF files",
     )
     parser.add_argument(
         "--output", "-o",
@@ -167,4 +175,4 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    run(input_path=args.input, output_path=args.output)
+    run(input_paths=args.input, output_path=args.output)

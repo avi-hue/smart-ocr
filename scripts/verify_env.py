@@ -57,6 +57,7 @@ REQUIRED_PACKAGES = {
     "dotenv"        : "python-dotenv",
     "loguru"        : "loguru",
     "tqdm"          : "tqdm",
+    "streamlit"     : "streamlit",
 }
 
 def check_packages():

@@ -46,13 +46,32 @@ _MONTH_MAP = {
 }
 
 
-def normalize_date(raw: Optional[str]) -> Optional[str]:
+def normalize_date(raw: Optional[str], reference_date: Optional[str] = None) -> Optional[str]:
     """
     Parse a raw date string and return YYYY-MM-DD, or None if unparseable.
+    If raw is a payment term like 'Net 30', compute the actual date from reference_date.
     """
     if not raw:
         return None
     raw = raw.strip()
+
+    # Handle payment terms like "Net 30", "Net 60", "Net 90"
+    net_match = re.match(r"(?i)net\s*(\d+)$", raw)
+    if net_match:
+        days = int(net_match.group(1))
+        if reference_date:
+            # Try to parse reference date and add N days
+            ref = normalize_date(reference_date)  # recursive, reference_date is a real date
+            if ref:
+                from datetime import datetime, timedelta
+                try:
+                    ref_dt = datetime.strptime(ref, "%Y-%m-%d")
+                    due_dt = ref_dt + timedelta(days=days)
+                    return due_dt.strftime("%Y-%m-%d")
+                except ValueError:
+                    pass
+        # If no reference date, return the term as-is (e.g. "Net 30")
+        return raw
 
     # Try DD/MM/YYYY style
     m = re.match(r"(\d{1,2})[\/\-\.](\d{1,2})[\/\-\.](\d{4})$", raw)
@@ -136,7 +155,7 @@ def normalize_invoice(invoice: ExtractedInvoice) -> ExtractedInvoice:
         invoice,
         invoice_number = clean_string(invoice.invoice_number),
         invoice_date   = normalize_date(invoice.invoice_date),
-        due_date       = normalize_date(invoice.due_date),
+        due_date       = normalize_date(invoice.due_date, reference_date=invoice.invoice_date),
         purchase_order = clean_string(invoice.purchase_order),
         vendor_name    = clean_string(invoice.vendor_name),
         vendor_address = clean_string(invoice.vendor_address),

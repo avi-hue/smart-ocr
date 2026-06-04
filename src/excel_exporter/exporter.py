@@ -58,18 +58,16 @@ SUMMARY_COLUMNS = [
 
 # Column order for Line Items sheet
 LINE_ITEM_COLUMNS = [
-    ("source_file",  "Source File"),
+    ("source_file",   "Source File"),
     ("invoice_number","Invoice #"),
-    ("sr_no",        "Sr. No."),
-    ("description",  "Description"),
-    ("hsn_sac_code", "HSN/SAC"),
-    ("quantity",     "Qty"),
-    ("unit",         "Unit"),
-    ("unit_price",   "Unit Price"),
-    ("discount",     "Discount"),
-    ("tax_rate",     "Tax Rate"),
-    ("tax_amount",   "Tax Amount"),
-    ("line_total",   "Line Total"),
+    ("sr_no",         "Sr. No."),
+    ("description",   "Description"),
+    ("hsn_sac_code",  "HSN/SAC"),
+    ("quantity",      "Qty"),
+    ("unit_price",    "Unit Price"),
+    ("tax_rate",      "Tax Rate"),
+    ("tax_amount",    "Tax Amount"),
+    ("line_total",    "Line Total"),
 ]
 
 
@@ -165,18 +163,16 @@ def export_to_excel(
     for invoice in invoices:
         for item in invoice.line_items:
             data = {
-                "source_file"  : invoice.source_file.name,
+                "source_file"   : invoice.source_file.name,
                 "invoice_number": invoice.invoice_number or "",
-                "sr_no"        : item.sr_no,
-                "description"  : item.description,
-                "hsn_sac_code" : item.hsn_sac_code,
-                "quantity"     : item.quantity,
-                "unit"         : item.unit,
-                "unit_price"   : item.unit_price,
-                "discount"     : item.discount,
-                "tax_rate"     : item.tax_rate,
-                "tax_amount"   : item.tax_amount,
-                "line_total"   : item.line_total,
+                "sr_no"         : item.sr_no,
+                "description"   : item.description,
+                "hsn_sac_code"  : item.hsn_sac_code,
+                "quantity"      : item.quantity,
+                "unit_price"    : item.unit_price,
+                "tax_rate"      : item.tax_rate,
+                "tax_amount"    : item.tax_amount,
+                "line_total"    : item.line_total,
             }
             _write_data_row(ws_items, li_row, data, LINE_ITEM_COLUMNS)
             li_row += 1

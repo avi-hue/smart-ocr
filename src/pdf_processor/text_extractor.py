@@ -82,7 +82,7 @@ def extract_text_pages(
             page = pdf.pages[page_num]
 
             # ── Raw text ────────────────────────────────────────────────────────
-            raw_text = page.extract_text(x_tolerance=3, y_tolerance=3) or ""
+            raw_text = page.extract_text(x_tolerance=3, y_tolerance=3, layout=True) or ""
 
             # ── Tables ──────────────────────────────────────────────────────────
             tables = page.extract_tables() or []

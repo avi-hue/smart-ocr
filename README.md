@@ -37,31 +37,73 @@ Smart-OCR/
 
 ## Quick Start
 
-### 1. Install Tesseract OCR
-Download and install from:  
-https://github.com/UB-Mannheim/tesseract/wiki  
-*(Recommended: install to `C:\Program Files\Tesseract-OCR\`)*
-
-### 2. Set up Python environment
+### 1. Set up Python virtual environment
 ```bash
 python -m venv venv
-venv\Scripts\activate          # Windows
+venv\Scripts\activate          # Windows (always run this first!)
 pip install -r requirements.txt
 ```
 
-### 3. Configure environment
-```bash
-copy .env.example .env
-# Edit .env and set TESSERACT_CMD to your Tesseract path
-```
-
-### 4. Verify setup
+### 2. Verify setup
 ```bash
 python scripts/verify_env.py
 ```
 
-### 5. Add sample invoices
-Place PDF invoice files in `data/samples/`.
+---
+
+## Running the Pipeline
+
+### Step 1 — Generate sample invoices (optional, for testing)
+Creates 5 randomized text-based PDF invoices in `data/samples/`:
+```bash
+python scripts/generate_multiple_samples.py
+```
+> Run this again anytime to generate a fresh set of 5 different invoices.
+
+---
+
+### Step 2 — Convert PDFs to Excel
+
+**Convert all PDFs in a folder:**
+```bash
+python main.py --input data/samples/
+```
+
+**Convert a single specific PDF:**
+```bash
+python main.py --input data/samples/my_invoice.pdf
+```
+
+**Convert multiple specific PDFs:**
+```bash
+python main.py --input data/samples/invoice_a.pdf data/samples/invoice_b.pdf
+```
+
+**Specify a custom output Excel path:**
+```bash
+python main.py --input data/samples/ --output my_report.xlsx
+```
+
+> Output Excel is saved to `output/excel/invoices.xlsx` by default.
+
+---
+
+### Step 3 — Open the Excel report
+
+The Excel file contains **two sheets**:
+| Sheet | Contents |
+|---|---|
+| **Invoice Summary** | One row per PDF — Invoice #, Vendor, Buyer, Totals, Dates |
+| **Line Items** | All individual line items from all PDFs with source file column |
+
+---
+
+### CLI Reference
+
+| Flag | Short | Description |
+|------|-------|-------------|
+| `--input` | `-i` | One or more PDF file paths or a folder path *(required)* |
+| `--output` | `-o` | Custom output `.xlsx` path *(optional)* |
 
 ---
 
@@ -84,17 +126,18 @@ Place PDF invoice files in `data/samples/`.
 
 > Each week delivers a working, end-to-end slice of functionality.
 
-### Week 1 — Text-Based Extraction + Excel Export ✅ In Progress
+### Week 1 — Text-Based Extraction + Excel Export ✅ Complete
 - [x] Environment setup, config, logging
 - [x] Invoice field taxonomy + regex patterns
 - [x] PDF classifier (text vs scanned detection)
-- [x] Text extractor (pdfplumber)
+- [x] Text extractor (pdfplumber, layout-aware)
+- [x] Columnar party extractor (vendor & buyer from two-column layout)
 - [x] Field extractor (regex → structured fields)
-- [x] Normalizer (dates, amounts, strings)
-- [x] Excel exporter (Summary + Line Items sheets)
-- [x] CLI pipeline (`main.py`)
-- [ ] Regex accuracy improvements
-- [ ] End-to-end test with real invoices
+- [x] Normalizer (dates, Net N terms → real dates, amounts, strings)
+- [x] Excel exporter (Invoice Summary + Line Items sheets, fully styled)
+- [x] CLI pipeline (`main.py`) with multi-file `--input` support
+- [x] Sample invoice generator (randomized: names, addresses, GSTIN, PAN, dates, currencies)
+- [x] Accuracy evaluation script (`scripts/evaluate_accuracy.py`)
 
 ### Week 2 — Image-Based OCR Extraction + Excel Export ⬜
 - [ ] Image preprocessor (grayscale, denoise, deskew)

@@ -17,6 +17,9 @@ numpy                     # numerical operations (used by OpenCV/Pandas)
 openpyxl                  # read/write .xlsx files
 XlsxWriter                # advanced Excel formatting & charts
 
+# ─── Web UI (Week 3) ────────────────────────────────────────────────────────────
+streamlit                 # web interface for the pipeline
+
 # ─── Utilities ────────────────────────────────────────────────────────────────
 python-dotenv             # load .env config (e.g. Tesseract path)
 loguru                    # structured logging

@@ -5,7 +5,7 @@ Documents the key fields found in typical invoice layouts
 and the regex patterns used to identify them.
 
 This module serves as the "research" artifact for Week 1
-and will be consumed by the extraction engine in Week 2.
+and is consumed by the extraction engine in Week 1-2.
 """
 
 from dataclasses import dataclass, field
@@ -64,7 +64,7 @@ HEADER_FIELDS: List[InvoiceField] = [
         required=False,
         example_values=["PO-2024-789", "4500012345"],
         regex_hints=[
-            r"(?i)(?:purchase\s+order|p\.?o\.?)\s*(?:#|no\.?)?[:\s]*([A-Z0-9\-/]+)",
+            r"(?i)(?:purchase\s+order|p\.?o\.?(?:\s*number)?)\s*(?:#|no\.?)?[:\s]*([A-Z0-9\-/]+)",
         ],
     ),
 ]
@@ -77,8 +77,8 @@ VENDOR_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["Acme Corp", "Global Supplies Ltd."],
         regex_hints=[
-            r"(?i)(?:from|seller|vendor|bill\s+from)[:\s]+(.+)",
-            r"(?i)(?:company|firm)\s+name[:\s]+(.+)",
+            r"(?i)bill\s+from:[^\n]*\n\s*([a-zA-Z0-9_\s\.,\-]+?)(?:\s{3,}|\n)",
+            r"(?i)(?:from|seller|vendor)[:\s]+([^ \n]+(?: [^ \n]+)*?)(?:\s{2,}|\n)",
         ],
     ),
     InvoiceField(
@@ -86,7 +86,9 @@ VENDOR_FIELDS: List[InvoiceField] = [
         description="Full postal address of the vendor",
         required=False,
         example_values=["123 Main St, Mumbai, MH 400001"],
-        regex_hints=[],   # usually extracted via layout/position heuristics
+        regex_hints=[
+            r"(?i)bill\s+from:[^\n]*\n[^\n]*\n\s*([a-zA-Z0-9_\s\.,\-]+?)(?:\s{3,}|\n)",
+        ],
     ),
     InvoiceField(
         name="vendor_gstin",
@@ -116,7 +118,8 @@ BUYER_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["XYZ Enterprises", "John Doe"],
         regex_hints=[
-            r"(?i)(?:bill\s+to|sold\s+to|customer|buyer)[:\s]+(.+)",
+            r"(?i)bill\s+to:[^\n]*\n.*?\s{3,}([a-zA-Z0-9_\s\.,\-]+?)(?:\s{3,}|\n|$)",
+            r"(?i)(?:sold\s+to|customer|buyer)[:\s]+([^ \n]+(?: [^ \n]+)*?)(?:\s{2,}|\n)",
         ],
     ),
     InvoiceField(
@@ -124,7 +127,9 @@ BUYER_FIELDS: List[InvoiceField] = [
         description="Billing address of the buyer",
         required=False,
         example_values=["456 Park Ave, Delhi 110001"],
-        regex_hints=[],
+        regex_hints=[
+            r"(?i)bill\s+to:[^\n]*\n[^\n]*\n.*?\s{3,}([a-zA-Z0-9_\s\.,\-]+?)(?:\s{3,}|\n|$)",
+        ],
     ),
 ]
 
@@ -136,7 +141,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹10,000.00", "$5,000.00"],
         regex_hints=[
-            r"(?i)sub[\s\-]?total[:\s]*[\₹\$€£]?\s*([\d,]+\.?\d*)",
+            r"(?i)sub[\s\-]?total[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
@@ -145,7 +150,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹1,800.00 (18% GST)"],
         regex_hints=[
-            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[:\s]*[\₹\$€£]?\s*([\d,]+\.?\d*)",
+            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
@@ -154,8 +159,8 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹11,800.00", "$5,500.00"],
         regex_hints=[
-            r"(?i)(?:grand\s+)?total(?:\s+amount)?(?:\s+due)?[:\s]*[\₹\$€£]?\s*([\d,]+\.?\d*)",
-            r"(?i)amount\s+payable[:\s]*[\₹\$€£]?\s*([\d,]+\.?\d*)",
+            r"(?i)(?:grand\s+)?\btotal(?:\s+amount)?(?:\s+due)?[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)amount\s+payable[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
