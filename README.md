@@ -20,7 +20,9 @@ Smart-OCR/
 │   │   ├── logger.py              ← Shared logger
 │   │   └── invoice_structures.py  ← Field taxonomy & regex hints
 │   ├── pdf_processor/    ← Week 1–2: PDF reading & classification
-│   ├── ocr_engine/       ← Week 2: OCR + image preprocessing
+│   ├── ocr_engine/       ← Week 1–2: Regex & Semantic LLM extraction
+│   │   ├── field_extractor.py     ← Spatial & Regex parsing
+│   │   └── llm_extractor.py       ← Google Gemini JSON extraction
 │   ├── data_cleaner/     ← Week 1–2: Cleaning & normalisation
 │   └── excel_exporter/   ← Week 1–2: Excel generation
 ├── scripts/
@@ -28,8 +30,11 @@ Smart-OCR/
 ├── tests/                ← Week 4: Test suite
 ├── docs/                 ← Documentation
 ├── Deliverables/         ← Project reports
+├── main.py               ← Core CLI entrypoint
 ├── requirements.txt
-├── .env.example
+├── .gitignore            ← Ignore list for git
+├── .env                  ← Local API keys (ignored by git)
+├── .env.example          ← Template for API keys
 └── README.md
 ```
 
@@ -44,7 +49,14 @@ venv\Scripts\activate          # Windows (always run this first!)
 pip install -r requirements.txt
 ```
 
-### 2. Verify setup
+### 2. Configure API Keys
+Create a `.env` file in the root directory and add your Google Gemini API key:
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+*(This is required for the LLM semantic fallback engine. Without it, the pipeline uses the regex/spatial extractor).*
+
+### 3. Verify setup
 ```bash
 python scripts/verify_env.py
 ```
@@ -92,9 +104,10 @@ python main.py --input data/samples/
 python main.py --input data/samples/my_invoice.pdf
 ```
 
-**Convert multiple specific PDFs:**
+**Convert multiple specific PDFs or use wildcards (Globs):**
 ```bash
 python main.py --input data/samples/invoice_a.pdf data/samples/invoice_b.pdf
+python main.py --input data/samples/external_*.pdf
 ```
 
 **Specify a custom output Excel path:**
@@ -130,6 +143,7 @@ The Excel file contains **two sheets**:
 | Component        | Library                        |
 |-----------------|-------------------------------|
 | PDF Reading      | PyMuPDF, pdfplumber           |
+| Semantic LLM AI  | google-genai, pydantic        |
 | OCR              | Tesseract + pytesseract       |
 | Image Processing | OpenCV, Pillow                |
 | Data Cleaning    | Pandas, Regex                 |
@@ -156,6 +170,12 @@ The Excel file contains **two sheets**:
 - [x] CLI pipeline (`main.py`) with multi-file `--input` support
 - [x] Sample invoice generator — 6 schema profiles (standard GST, split CGST/SGST, discount, minimal, international, no-PO/PAN); `--count N` flag
 - [x] Accuracy evaluation script (`scripts/evaluate_accuracy.py`)
+
+### Step 2 — Semantic LLM Fallback & Unstructured Data ✅ Complete
+- [x] Integrate `google-genai` and `pydantic` strict JSON schema validation
+- [x] Build `llm_extractor.py` for semantic zero-shot extraction
+- [x] Automatic pipeline routing (detects API key and switches to LLM)
+- [x] Excel exporter graceful failovers (auto-pruning empty columns, `PermissionError` handling)
 
 ### Week 2 — Image-Based OCR Extraction + Excel Export ⬜
 - [ ] Image preprocessor (grayscale, denoise, deskew)
