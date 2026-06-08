@@ -4138,3 +4138,712 @@
 2026-06-05 04:32:57 | INFO     | __main__:132 — Pipeline complete: 5/5 invoices extracted
 2026-06-05 04:32:57 | INFO     | src.excel_exporter.exporter:139 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
 2026-06-05 04:32:57 | INFO     | src.excel_exporter.exporter:186 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-05 15:24:53 | INFO     | __main__:119 — Found 10 PDF file(s) to process
+2026-06-05 15:24:53 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:53 | INFO     | __main__:76 — Processing: random_invoice_01_93a0f6.pdf
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_01_93a0f6.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1777 chars → TEXT
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     677 chars → TEXT
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_01_93a0f6.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Soylent Corp
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 278 Main St, Chennai, GJ 947258
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 736 Lake Dr, Bengaluru, MH 339082
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-64421
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 17/04/2024
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 04/07/2024
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9910
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 27CDNNU9674Y8Z2
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → CEUYP9285G
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,659,609.54
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 432,068.71
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,091,678.25
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:53 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_01_93a0f6.pdf
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:53 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:53 | INFO     | __main__:76 — Processing: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1794 chars → TEXT
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     236 chars → TEXT
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_01_a5bcaa.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 442 Oak Rd, Chennai, KA 247376
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 271 Oak Rd, Kolkata, WB 359598
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-14964
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 13/04/2024
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/06/2024
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9794
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 18LATBP5258H7ZE
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → TMSZX9615P
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,171,512.24
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 332,973.95
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,504,486.19
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:53 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:53 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:53 | INFO     | __main__:76 — Processing: random_invoice_02_51a956.pdf
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_02_51a956.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1741 chars → TEXT
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     633 chars → TEXT
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_02_51a956.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 257 Park Ave, Kolkata, WB 907336
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 947 Lake Dr, Pune, TS 760167
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-34040
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 14/01/2024
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9983
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 35JWPZG2877B4ZZ
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LBNCQ5618F
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 1,700,308.41
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 307,880.56
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,008,188.97
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:53 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:53 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_02_51a956.pdf
+2026-06-05 15:24:53 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:53 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:53 | INFO     | __main__:76 — Processing: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1767 chars → TEXT
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     698 chars → TEXT
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:53 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_02_7b7c4d.pdf
+2026-06-05 15:24:53 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 926 Main St, Mumbai, GJ 451722
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 812 Lake Dr, Delhi, GJ 216334
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-92358
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 14/03/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 15
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3702
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 21XIRVQ8233U5ZK
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → ITHXM6002E
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 3,029,594.93
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 446,774.27
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,476,369.20
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1763 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     183 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_03_cb1d0f.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Initech
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 226 Lake Dr, Chennai, DL 192125
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Goliath National Bank
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 59 Oak Rd, Bengaluru, TS 875535
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-29895
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 15/12/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 15/01/2025
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-7543
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 01UIPES7955N9ZU
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → TKEZZ9820C
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,063,662.63
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 320,199.01
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,383,861.64
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1714 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     653 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_03_cb9ea6.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 80 Oak Rd, Pune, TS 339694
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 303 Market Blvd, Bengaluru, MH 380478
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-91959
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 16/07/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 31/07/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-7359
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 13RCFTO6699R9ZM
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LROTQ5791S
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,201,653.62
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 328,310.66
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,529,964.28
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_04_11cdae.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_04_11cdae.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1765 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     357 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_04_11cdae.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Globex Inc
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 781 Main St, Mumbai, GJ 796532
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 925 Main St, Bengaluru, KA 562938
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-98000
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 22/06/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-1789
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 25YBCPB8032X7Z8
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → FDXNI1420X
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,728,254.53
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 507,682.35
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,235,936.88
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_04_11cdae.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_04_baab46.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_04_baab46.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1770 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     651 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_04_baab46.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 342 Lake Dr, Bengaluru, MH 29281
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Goliath National Bank
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 6 451 Lake Dr, Kolkata, WB 428065
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-26813
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 23/01/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3589
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 35UDUIP8324N4ZB
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LKTMK4263N
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,968,291.88
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 532,546.56
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,500,838.44
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_04_baab46.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_05_376e89.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_05_376e89.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1760 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     426 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_05_376e89.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Acme Corp
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 592 Oak Rd, Mumbai, WB 758677
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 196 Lake Dr, Mumbai, DL 603413
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-43687
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 01/12/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/12/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-2701
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 07IQMXU3113A2ZL
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → SRRIM3561U
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,632,182.31
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 426,673.42
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,058,855.73
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → (not found)
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 13/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_05_376e89.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:76 — Processing: random_invoice_05_78d429.pdf
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_05_78d429.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1787 chars → TEXT
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     366 chars → TEXT
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_05_78d429.pdf
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:24:54 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:24:54 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Umbrella Corp
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 42 Main St, Chennai, MH 638384
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 763 Market Blvd, Kolkata, DL 777248
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-46448
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 24/06/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 06/09/2024
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3793
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 21HBJUQ5698N2ZN
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → VQDYL6322F
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,424,906.11
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 333,757.56
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,758,663.67
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:24:54 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:24:54 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_05_78d429.pdf
+2026-06-05 15:24:54 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:24:54 | INFO     | __main__:131 — =======================================================
+2026-06-05 15:24:54 | INFO     | __main__:132 — Pipeline complete: 10/10 invoices extracted
+2026-06-05 15:24:54 | INFO     | src.excel_exporter.exporter:139 — Exporting 10 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-05 15:24:55 | INFO     | src.excel_exporter.exporter:186 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-05 15:35:20 | INFO     | __main__:119 — Found 15 PDF file(s) to process
+2026-06-05 15:35:20 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:20 | INFO     | __main__:76 — Processing: random_invoice_01_93a0f6.pdf
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_01_93a0f6.pdf
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1777 chars → TEXT
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     677 chars → TEXT
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_01_93a0f6.pdf
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Soylent Corp
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 278 Main St, Chennai, GJ 947258
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 736 Lake Dr, Bengaluru, MH 339082
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-64421
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 17/04/2024
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 04/07/2024
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9910
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 27CDNNU9674Y8Z2
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → CEUYP9285G
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,659,609.54
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 432,068.71
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,091,678.25
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:20 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:20 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:20 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_01_93a0f6.pdf
+2026-06-05 15:35:20 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:20 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:20 | INFO     | __main__:76 — Processing: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1794 chars → TEXT
+2026-06-05 15:35:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     236 chars → TEXT
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:20 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_01_a5bcaa.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 442 Oak Rd, Chennai, KA 247376
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 271 Oak Rd, Kolkata, WB 359598
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-14964
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 13/04/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/06/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9794
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 18LATBP5258H7ZE
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → TMSZX9615P
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,171,512.24
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 332,973.95
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,504,486.19
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_01_a5bcaa.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_01_bdd0ab.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_01_bdd0ab.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1765 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     242 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_01_bdd0ab.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 666 Park Ave, Chennai, GJ 265323
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 994 Hill Rd, Kolkata, KA 360103
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-34977
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 03/03/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 90
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3386
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 13JFRQS5413O7ZX
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → GMAGZ4513U
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,507,579.51
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 444,440.70
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,952,020.21
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_01_bdd0ab.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_02_51a956.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_02_51a956.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1741 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     633 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_02_51a956.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 257 Park Ave, Kolkata, WB 907336
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 947 Lake Dr, Pune, TS 760167
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-34040
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 14/01/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-9983
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 35JWPZG2877B4ZZ
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LBNCQ5618F
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 1,700,308.41
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 307,880.56
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,008,188.97
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_02_51a956.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1767 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     698 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_02_7b7c4d.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 926 Main St, Mumbai, GJ 451722
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 812 Lake Dr, Delhi, GJ 216334
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-92358
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 14/03/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 15
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3702
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 21XIRVQ8233U5ZK
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → ITHXM6002E
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 3,029,594.93
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 446,774.27
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,476,369.20
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_02_7b7c4d.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_02_adebdf.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_02_adebdf.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1804 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     175 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_02_adebdf.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 596 Park Ave, Hyderabad, DL 2223
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Stark Industries
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 13 910 Park Ave, Kolkata, KA 711924
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-37332
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 12/08/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/09/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-2893
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 34ZFMWC2810K9ZW
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → VDEUW8658F
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 1,924,061.02
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 324,481.91
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,248,542.93
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_02_adebdf.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_03_c5b567.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_03_c5b567.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1755 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     434 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_03_c5b567.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Acme Corp
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 988 Main St, Chennai, MH 535624
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → LexCorp
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 595 Lake Dr, Pune, GJ 595351
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-40590
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 28/06/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/08/2024
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-7855
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 10TJQJA6266Q9ZH
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → BDVOR4100F
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,423,356.19
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 343,243.88
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,766,600.07
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:21 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:21 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_03_c5b567.pdf
+2026-06-05 15:35:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:21 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:21 | INFO     | __main__:76 — Processing: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1763 chars → TEXT
+2026-06-05 15:35:21 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     183 chars → TEXT
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:21 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_03_cb1d0f.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Initech
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 226 Lake Dr, Chennai, DL 192125
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Goliath National Bank
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 59 Oak Rd, Bengaluru, TS 875535
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-29895
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 15/12/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 15/01/2025
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-7543
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 01UIPES7955N9ZU
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → TKEZZ9820C
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,063,662.63
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 320,199.01
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,383,861.64
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:22 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_03_cb1d0f.pdf
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:22 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:22 | INFO     | __main__:76 — Processing: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1714 chars → TEXT
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     653 chars → TEXT
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_03_cb9ea6.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Cyberdyne
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 80 Oak Rd, Pune, TS 339694
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 303 Market Blvd, Bengaluru, MH 380478
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-91959
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 16/07/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 31/07/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-7359
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 13RCFTO6699R9ZM
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LROTQ5791S
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,201,653.62
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 328,310.66
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,529,964.28
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:22 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_03_cb9ea6.pdf
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:22 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:22 | INFO     | __main__:76 — Processing: random_invoice_04_0cc919.pdf
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_04_0cc919.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1760 chars → TEXT
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     195 chars → TEXT
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_04_0cc919.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Initech
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 152 Market Blvd, Bengaluru, DL 1
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 07289 974 Oak Rd, Chennai, TN 242770
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-72578
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 01/09/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 30/10/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-6622
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 20VJBMG1206F3ZE
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → XTKCL5131A
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,273,766.79
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 376,910.10
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,650,676.89
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → $
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:22 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_04_0cc919.pdf
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:22 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:22 | INFO     | __main__:76 — Processing: random_invoice_04_11cdae.pdf
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_04_11cdae.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1765 chars → TEXT
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     357 chars → TEXT
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_04_11cdae.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Globex Inc
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 781 Main St, Mumbai, GJ 796532
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Wayne Enterprises
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 925 Main St, Bengaluru, KA 562938
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-98000
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 22/06/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-1789
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 25YBCPB8032X7Z8
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → FDXNI1420X
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,728,254.53
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 507,682.35
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,235,936.88
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:22 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_04_11cdae.pdf
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:22 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:22 | INFO     | __main__:76 — Processing: random_invoice_04_baab46.pdf
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_04_baab46.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1770 chars → TEXT
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     651 chars → TEXT
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_04_baab46.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 342 Lake Dr, Bengaluru, MH 29281
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Goliath National Bank
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 6 451 Lake Dr, Kolkata, WB 428065
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-26813
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 23/01/2024
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3589
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 35UDUIP8324N4ZB
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → LKTMK4263N
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,968,291.88
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 532,546.56
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,500,838.44
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:22 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:22 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_04_baab46.pdf
+2026-06-05 15:35:22 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:22 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:22 | INFO     | __main__:76 — Processing: random_invoice_05_376e89.pdf
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_05_376e89.pdf
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1760 chars → TEXT
+2026-06-05 15:35:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     426 chars → TEXT
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_05_376e89.pdf
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Acme Corp
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 592 Oak Rd, Mumbai, WB 758677
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 196 Lake Dr, Mumbai, DL 603413
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-43687
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 01/12/2024
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 21/12/2024
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-2701
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 07IQMXU3113A2ZL
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → SRRIM3561U
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,632,182.31
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 426,673.42
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 3,058,855.73
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → (not found)
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:23 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 13/14 fields found
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_05_376e89.pdf
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:23 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:23 | INFO     | __main__:76 — Processing: random_invoice_05_78d429.pdf
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_05_78d429.pdf
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1787 chars → TEXT
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     366 chars → TEXT
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_05_78d429.pdf
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Umbrella Corp
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 42 Main St, Chennai, MH 638384
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Oscorp
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 763 Market Blvd, Kolkata, DL 777248
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-46448
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 24/06/2024
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → 06/09/2024
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-3793
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 21HBJUQ5698N2ZN
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → VQDYL6322F
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,424,906.11
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 333,757.56
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,758,663.67
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → €
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:23 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 14/14 fields found
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_05_78d429.pdf
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:23 | INFO     | __main__:75 — =======================================================
+2026-06-05 15:35:23 | INFO     | __main__:76 — Processing: random_invoice_05_c90bd4.pdf
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: random_invoice_05_c90bd4.pdf
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1771 chars → TEXT
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     545 chars → TEXT
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in random_invoice_05_c90bd4.pdf
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5316 chars, 1 table(s)
+2026-06-05 15:35:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5311 chars, 1 table(s)
+2026-06-05 15:35:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_name          → Massive Dynamic
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   vendor_address       → 720 Oak Rd, Pune, MH 705155
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_name           → Goliath National Bank
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:276 —   buyer_address        → 388 Market Blvd, Chennai, TS 735906
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_number       → INV-82300
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   invoice_date         → 08/09/2024
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   due_date             → Net 60
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   purchase_order       → PO-8134
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_gstin         → 06OXKFV9486R2Z6
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   vendor_pan           → GZOTR6121I
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   subtotal             → 2,131,900.09
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   tax_amount           → 348,925.65
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   total_amount         → 2,480,825.74
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:293 —   currency             → (not found)
+2026-06-05 15:35:23 | DEBUG    | src.ocr_engine.field_extractor:300 —   line_items          → 28 row(s)
+2026-06-05 15:35:23 | INFO     | src.ocr_engine.field_extractor:305 — Field extraction complete: 13/14 fields found
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: random_invoice_05_c90bd4.pdf
+2026-06-05 15:35:23 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-05 15:35:23 | INFO     | __main__:131 — =======================================================
+2026-06-05 15:35:23 | INFO     | __main__:132 — Pipeline complete: 15/15 invoices extracted
+2026-06-05 15:35:23 | INFO     | src.excel_exporter.exporter:139 — Exporting 15 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx

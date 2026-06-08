@@ -54,11 +54,29 @@ python scripts/verify_env.py
 ## Running the Pipeline
 
 ### Step 1 — Generate sample invoices (optional, for testing)
-Creates 5 randomized text-based PDF invoices in `data/samples/`:
+Generates diverse invoice PDFs — each with a **different schema, columns, and header fields** — into `data/samples/`:
+
 ```bash
 python scripts/generate_multiple_samples.py
 ```
-> Run this again anytime to generate a fresh set of 5 different invoices.
+> Generates **6 PDFs by default** (one per profile). Use `--count N` to generate more:
+> ```bash
+> python scripts/generate_multiple_samples.py --count 12
+> ```
+
+**Available invoice profiles (schemas):**
+
+| Profile | Label | Key Differences |
+|---|---|---|
+| `standard_gst` | TAX INVOICE | Full 8-column table; GSTIN, PAN, PO#, Due Date in header |
+| `no_po_no_pan` | INVOICE | No PO Number or Vendor PAN |
+| `split_gst` | TAX INVOICE | 10 columns — CGST % and SGST % shown separately |
+| `with_discount` | SALES INVOICE | Extra Disc. % column; no Due Date |
+| `minimal` | BILL / RECEIPT | Only 5 columns (no tax columns); no GSTIN/PAN/PO# |
+| `international` | COMMERCIAL INVOICE | Uses VAT instead of GST; USD / EUR / GBP currencies |
+
+> PDFs are named with their profile, e.g. `invoice_03_abc123_split_gst.pdf`, so you can tell them apart at a glance. Fields missing from a profile appear as **empty cells** in the Excel output.
+
 
 ---
 
@@ -136,7 +154,7 @@ The Excel file contains **two sheets**:
 - [x] Normalizer (dates, Net N terms → real dates, amounts, strings)
 - [x] Excel exporter (Invoice Summary + Line Items sheets, fully styled)
 - [x] CLI pipeline (`main.py`) with multi-file `--input` support
-- [x] Sample invoice generator (randomized: names, addresses, GSTIN, PAN, dates, currencies)
+- [x] Sample invoice generator — 6 schema profiles (standard GST, split CGST/SGST, discount, minimal, international, no-PO/PAN); `--count N` flag
 - [x] Accuracy evaluation script (`scripts/evaluate_accuracy.py`)
 
 ### Week 2 — Image-Based OCR Extraction + Excel Export ⬜

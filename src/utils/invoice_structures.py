@@ -64,7 +64,7 @@ HEADER_FIELDS: List[InvoiceField] = [
         required=False,
         example_values=["PO-2024-789", "4500012345"],
         regex_hints=[
-            r"(?i)(?:purchase\s+order|p\.?o\.?(?:\s*number)?)\s*(?:#|no\.?)?[:\s]*([A-Z0-9\-/]+)",
+            r"(?i)\b(?:purchase\s+order|p\.?o\.?\s*(?:number|no\.?))\s*[:#\s]\s*([A-Z0-9][A-Z0-9\-/]{1,20})",
         ],
     ),
 ]
@@ -170,7 +170,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         example_values=["INR", "USD", "EUR", "₹", "$"],
         regex_hints=[
             r"(?i)currency[:\s]*([A-Z]{3})",
-            r"(₹|\$|€|£)",
+            r"(Rs\.|€|\$)",    # matches Rs. (INR), € (EUR), $ (USD) as used in PDFs
         ],
     ),
 ]

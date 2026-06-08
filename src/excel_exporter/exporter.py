@@ -65,8 +65,13 @@ LINE_ITEM_COLUMNS = [
     ("hsn_sac_code",  "HSN/SAC"),
     ("quantity",      "Qty"),
     ("unit_price",    "Unit Price"),
+    ("discount",      "Disc. %"),
     ("tax_rate",      "Tax Rate"),
     ("tax_amount",    "Tax Amount"),
+    ("cgst_rate",     "CGST %"),
+    ("cgst_amount",   "CGST Amt"),
+    ("sgst_rate",     "SGST %"),
+    ("sgst_amount",   "SGST Amt"),
     ("line_total",    "Line Total"),
 ]
 
@@ -170,8 +175,13 @@ def export_to_excel(
                 "hsn_sac_code"  : item.hsn_sac_code,
                 "quantity"      : item.quantity,
                 "unit_price"    : item.unit_price,
+                "discount"      : item.discount,
                 "tax_rate"      : item.tax_rate,
                 "tax_amount"    : item.tax_amount,
+                "cgst_rate"     : item.cgst_rate,
+                "cgst_amount"   : item.cgst_amount,
+                "sgst_rate"     : item.sgst_rate,
+                "sgst_amount"   : item.sgst_amount,
                 "line_total"    : item.line_total,
             }
             _write_data_row(ws_items, li_row, data, LINE_ITEM_COLUMNS)

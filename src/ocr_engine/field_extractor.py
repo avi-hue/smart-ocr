@@ -38,8 +38,13 @@ class LineItem:
     hsn_sac_code: Optional[str] = None
     quantity: Optional[str] = None
     unit_price: Optional[str] = None
+    discount: Optional[str] = None
     tax_rate: Optional[str] = None
     tax_amount: Optional[str] = None
+    cgst_rate: Optional[str] = None
+    cgst_amount: Optional[str] = None
+    sgst_rate: Optional[str] = None
+    sgst_amount: Optional[str] = None
     line_total: Optional[str] = None
 
 
@@ -125,7 +130,8 @@ def _extract_line_items_from_tables(
     """
     items: List[LineItem] = []
     HEADER_KEYWORDS = {"description", "item", "particulars", "qty", "quantity",
-                       "amount", "price", "total", "rate", "hsn", "sac"}
+                       "amount", "price", "total", "rate", "hsn", "sac",
+                       "cgst", "sgst", "vat", "gst", "discount", "mrp"}
 
     for table in tables:
         if not table or len(table) < 2:
@@ -137,27 +143,97 @@ def _extract_line_items_from_tables(
         if matched < 2:
             continue
 
-        # Build column index map
+        # Build column index map — covers all labels used across every invoice profile
         col_map: Dict[str, int] = {}
         for idx, header in enumerate(header_row):
-            if "sr" in header or header in ("no", "s.no", "#"):
-                col_map["sr_no"] = idx
-            elif "description" in header or "item" in header or "particular" in header:
-                col_map["description"] = idx
+            # ── Serial number ────────────────────────────────────────────────
+            # Matches: "sr. no.", "sr", "no.", "s.no.", "item #", "line", "#"
+            if (
+                "sr" in header
+                or header in ("no", "no.", "s.no", "s.no.", "#", "line")
+                or (header.startswith("item") and "#" in header)
+            ):
+                col_map.setdefault("sr_no", idx)
+
+            # ── Description ──────────────────────────────────────────────────
+            # Matches: "description", "item description", "particulars",
+            #          "product/service", "item"  (but NOT "item #")
+            elif (
+                "description" in header
+                or "particular" in header
+                or "product" in header
+                or "service" in header
+                or (header == "item")
+            ):
+                col_map.setdefault("description", idx)
+
+            # ── HSN / SAC ────────────────────────────────────────────────────
             elif "hsn" in header or "sac" in header:
-                col_map["hsn_sac_code"] = idx
-            elif "qty" in header or "quantity" in header:
-                col_map["quantity"] = idx
-            elif "tax" in header and ("rate" in header or "%" in header):
-                col_map["tax_rate"] = idx
-            elif "unit" in header and "price" in header:
-                col_map["unit_price"] = idx
-            elif "rate" in header and "tax" not in header:
-                col_map["unit_price"] = idx
-            elif "tax" in header and ("amt" in header or "amount" in header):
-                col_map["tax_amount"] = idx
-            elif "total" in header or "amount" in header or "amt" in header:
-                col_map["line_total"] = idx
+                col_map.setdefault("hsn_sac_code", idx)
+
+            # ── Quantity ─────────────────────────────────────────────────────
+            # Matches: "qty", "quantity", "units", "unit" (standalone)
+            elif (
+                "qty" in header
+                or "quantity" in header
+                or header in ("units", "unit")
+            ):
+                col_map.setdefault("quantity", idx)
+
+            # ── Tax / VAT / GST rate (%, not amount) ─────────────────────────
+            # CGST and SGST get their own dedicated keys; generic tax/gst/vat
+            # only falls through if it's not already one of those.
+            elif "cgst" in header and "%" in header and "amt" not in header and "amount" not in header:
+                col_map.setdefault("cgst_rate", idx)
+
+            elif "sgst" in header and "%" in header and "amt" not in header and "amount" not in header:
+                col_map.setdefault("sgst_rate", idx)
+
+            elif (
+                "%" in header
+                and any(kw in header for kw in ("tax", "gst", "vat"))
+                and "amt" not in header
+                and "amount" not in header
+            ) or (
+                "tax" in header and "rate" in header
+            ):
+                col_map.setdefault("tax_rate", idx)
+
+            # ── Unit price / rate ─────────────────────────────────────────────
+            # Matches: "unit price", "list price", "mrp", "rate" (not tax-rate),
+            #          "price" standalone
+            elif (
+                ("price" in header and "unit" in header)
+                or ("price" in header and "list" in header)
+                or header in ("mrp", "rate", "price")
+                or ("rate" in header and "tax" not in header and "%" not in header)
+            ):
+                col_map.setdefault("unit_price", idx)
+
+            # ── Discount ──────────────────────────────────────────────────────
+            elif "disc" in header:
+                col_map.setdefault("discount", idx)
+
+            # ── Tax / GST / VAT / CGST / SGST amount ─────────────────────────
+            elif "cgst" in header and any(kw in header for kw in ("amt", "amount")):
+                col_map.setdefault("cgst_amount", idx)
+
+            elif "sgst" in header and any(kw in header for kw in ("amt", "amount")):
+                col_map.setdefault("sgst_amount", idx)
+
+            elif (
+                any(kw in header for kw in ("tax", "gst", "vat"))
+                and any(kw in header for kw in ("amt", "amount"))
+            ):
+                col_map.setdefault("tax_amount", idx)
+
+            # ── Line total (catch-all — must be last) ─────────────────────────
+            elif (
+                "total" in header
+                or "amount" in header
+                or "amt" in header
+            ):
+                col_map.setdefault("line_total", idx)
 
         def cell(row, key):
             idx = col_map.get(key)
@@ -176,60 +252,86 @@ def _extract_line_items_from_tables(
                 hsn_sac_code = cell(row, "hsn_sac_code"),
                 quantity     = cell(row, "quantity"),
                 unit_price   = cell(row, "unit_price"),
+                discount     = cell(row, "discount"),
                 tax_rate     = cell(row, "tax_rate"),
                 tax_amount   = cell(row, "tax_amount"),
+                cgst_rate    = cell(row, "cgst_rate"),
+                cgst_amount  = cell(row, "cgst_amount"),
+                sgst_rate    = cell(row, "sgst_rate"),
+                sgst_amount  = cell(row, "sgst_amount"),
                 line_total   = cell(row, "line_total"),
             ))
         break  # use the first matching table
 
     return items
 
-def _extract_party_info(text: str) -> dict:
+def _extract_party_info(text: str, tables: list | None = None) -> dict:
     """
-    Parse vendor and buyer name/address from a columnar 'Bill From / Bill To' block.
+    Parse vendor and buyer name/address from the invoice.
 
-    The layout looks like (with many spaces between columns):
-        Bill From:                      Bill To:
-        Globex Inc                      Daily Planet
-        123 Vendor St, City, ST 12345   456 Buyer Ave, Town, ST 67890
-        GSTIN: 27AABCU9603R1ZX PAN: ABCDE1234F
-
-    Strategy: Find the 'Bill From:'/'Bill To:' header line, then read the
-    subsequent lines. Split each line at the midpoint of the two header labels
-    to reliably separate left (vendor) and right (buyer) columns.
+    Strategy (in priority order):
+      1. Scan pdfplumber tables for a table whose first row contains both
+         'Bill From' and 'Bill To' headers — these are extracted cleanly
+         with no character-alignment issues.
+      2. Fall back to character-column splitting on the raw text (original
+         approach, kept as a safety net for non-table layouts).
     """
     result = {"vendor_name": None, "vendor_address": None,
               "buyer_name": None,  "buyer_address": None}
 
-    # Find the header line containing both labels
+    # ── Strategy 1: read from pdfplumber table data ───────────────────────────
+    # The party block is a proper PDF Table, so pdfplumber returns it cleanly.
+    # Row 0: ["Bill From:", "Bill To:"]
+    # Row 1: [vendor_name, buyer_name]
+    # Row 2: [vendor_address, buyer_address]
+    # Row 3 (optional): ["GSTIN: ... PAN: ...", ""]
+    if tables:
+        for table in tables:
+            if not table or len(table) < 2:
+                continue
+            header = [str(c or "").lower().strip() for c in table[0]]
+            # Identify the party table by its header row
+            if any("bill from" in h for h in header) and any("bill to" in h for h in header):
+                from_idx = next((i for i, h in enumerate(header) if "bill from" in h), 0)
+                to_idx   = next((i for i, h in enumerate(header) if "bill to"   in h), 1)
+
+                def _cell(row, idx):
+                    if idx < len(row):
+                        val = str(row[idx] or "").strip()
+                        return val if val else None
+                    return None
+
+                # Row 1 → names, Row 2 → addresses
+                if len(table) > 1:
+                    result["vendor_name"] = _cell(table[1], from_idx)
+                    result["buyer_name"]  = _cell(table[1], to_idx)
+                if len(table) > 2:
+                    result["vendor_address"] = _cell(table[2], from_idx)
+                    result["buyer_address"]  = _cell(table[2], to_idx)
+                return result
+
+    # ── Strategy 2: character-column split on raw text (fallback) ─────────────
     header_match = re.search(
         r"(?i)([ \t]*)(bill\s+from:)([ \t]*)(bill\s+to:)([ \t]*)\n",
         text
     )
     if not header_match:
-        # Fallback: try simple single-column patterns
         m = re.search(r"(?i)(?:from|vendor|seller)[:\s]+([^\n]+)", text)
         if m: result["vendor_name"] = m.group(1).strip()
         m = re.search(r"(?i)(?:bill\s+to|sold\s+to|customer|buyer)[:\s]+([^\n]+)", text)
         if m: result["buyer_name"] = m.group(1).strip()
         return result
 
-    # Calculate the column split point: position of 'Bill To:' in the header
     header_line = header_match.group(0)
-    split_pos = header_line.lower().index("bill to:")
+    split_pos   = header_line.lower().index("bill to:")
+    rest        = text[header_match.end():]
+    lines       = rest.split("\n")[:6]
 
-    # Grab up to 5 lines after the header
-    rest_of_text = text[header_match.end():]
-    lines = rest_of_text.split("\n")[:6]
-
-    left_lines = []
-    right_lines = []
-
+    left_lines, right_lines = [], []
     for line in lines:
         left_part  = line[:split_pos].strip()
         right_part = line[split_pos:].strip()
-        # Skip lines that only contain GSTIN/PAN (keep for gstin/pan regex)
-        if left_part and not re.match(r"(?i)^(gstin|pan)[:\s]", left_part):
+        if left_part  and not re.match(r"(?i)^(gstin|pan)[:\s]", left_part):
             left_lines.append(left_part)
         if right_part and not re.match(r"(?i)^(gstin|pan)[:\s]", right_part):
             right_lines.append(right_part)
@@ -265,8 +367,8 @@ def extract_invoice_fields(
     invoice = ExtractedInvoice(source_file=source_file)
     confidence: Dict[str, float] = {}
 
-    # ── Party fields (columnar extraction) ───────────────────────────────────
-    party = _extract_party_info(text)
+    # ── Party fields (table-aware extraction) ──────────────────────────────
+    party = _extract_party_info(text, tables=tables)
     invoice.vendor_name    = party["vendor_name"]
     invoice.vendor_address = party["vendor_address"]
     invoice.buyer_name     = party["buyer_name"]
