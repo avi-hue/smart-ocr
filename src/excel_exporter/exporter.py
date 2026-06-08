@@ -115,6 +115,42 @@ def _auto_column_width(ws) -> None:
         ws.column_dimensions[col_letter].width = min(max_len + 4, 40)
 
 
+def _build_dynamic_columns(base_columns: List[tuple], data_list: List[dict]) -> List[tuple]:
+    """
+    1. Finds any extra keys in data_list not present in base_columns.
+    2. Removes any columns that are entirely empty across all rows.
+    """
+    if not data_list:
+        return base_columns
+
+    # Collect all keys present across all dicts
+    all_keys = set()
+    for d in data_list:
+        all_keys.update(d.keys())
+
+    # Map existing base keys
+    base_keys = {k for k, v in base_columns}
+
+    # Append new keys
+    extra_cols = []
+    for k in all_keys:
+        if k not in base_keys:
+            # Format title e.g. "salesperson_name" -> "Salesperson Name"
+            extra_cols.append((k, k.replace("_", " ").title()))
+    
+    full_columns = base_columns + extra_cols
+
+    # Prune empty columns
+    active_columns = []
+    for col_key, col_label in full_columns:
+        # Check if at least one row has a truthy value for this column
+        is_empty = all(not str(d.get(col_key) or "").strip() for d in data_list)
+        if not is_empty:
+            active_columns.append((col_key, col_label))
+
+    return active_columns
+
+
 # ──────────────────────────────────────────────────────────────────────────────
 # Public API
 # ──────────────────────────────────────────────────────────────────────────────
@@ -150,11 +186,16 @@ def export_to_excel(
     ws_summary.title = "Invoice Summary"
     ws_summary.freeze_panes = "A2"   # freeze header row
 
-    _write_header(ws_summary, SUMMARY_COLUMNS)
+    # 1. Collect all summary data
+    summary_data_list = [inv.to_flat_dict() for inv in invoices]
+    
+    # 2. Discover extra keys and drop empty columns
+    dynamic_summary_cols = _build_dynamic_columns(SUMMARY_COLUMNS, summary_data_list)
+    
+    _write_header(ws_summary, dynamic_summary_cols)
 
-    for row_idx, invoice in enumerate(invoices, start=2):
-        data = invoice.to_flat_dict()
-        _write_data_row(ws_summary, row_idx, data, SUMMARY_COLUMNS)
+    for row_idx, data in enumerate(summary_data_list, start=2):
+        _write_data_row(ws_summary, row_idx, data, dynamic_summary_cols)
 
     _auto_column_width(ws_summary)
 
@@ -162,9 +203,8 @@ def export_to_excel(
     ws_items = wb.create_sheet("Line Items")
     ws_items.freeze_panes = "A2"
 
-    _write_header(ws_items, LINE_ITEM_COLUMNS)
-
-    li_row = 2
+    # 1. Collect all line item data
+    line_item_data_list = []
     for invoice in invoices:
         for item in invoice.line_items:
             data = {
@@ -183,15 +223,33 @@ def export_to_excel(
                 "sgst_rate"     : item.sgst_rate,
                 "sgst_amount"   : item.sgst_amount,
                 "line_total"    : item.line_total,
+                **(item.extra_fields or {}),
             }
-            _write_data_row(ws_items, li_row, data, LINE_ITEM_COLUMNS)
-            li_row += 1
+            line_item_data_list.append(data)
 
-    if li_row == 2:
+    # 2. Discover extra keys and drop empty columns
+    dynamic_item_cols = _build_dynamic_columns(LINE_ITEM_COLUMNS, line_item_data_list)
+
+    _write_header(ws_items, dynamic_item_cols)
+
+    for row_idx, data in enumerate(line_item_data_list, start=2):
+        _write_data_row(ws_items, row_idx, data, dynamic_item_cols)
+
+    if not line_item_data_list:
         ws_items.cell(row=2, column=1, value="No line items extracted.")
 
     _auto_column_width(ws_items)
 
-    wb.save(output_path)
-    log.info("Excel workbook saved → {}", output_path)
-    return output_path
+    try:
+        wb.save(output_path)
+        log.info("Excel workbook saved → {}", output_path)
+        return output_path
+    except PermissionError:
+        # If the file is open in Excel, Windows locks it. 
+        # Fallback to appending a timestamp to the filename.
+        import time
+        timestamp = int(time.time())
+        fallback_path = output_path.with_name(f"{output_path.stem}_{timestamp}{output_path.suffix}")
+        wb.save(fallback_path)
+        log.warning("Original file was locked (likely open in Excel). Saved as fallback → {}", fallback_path)
+        return fallback_path

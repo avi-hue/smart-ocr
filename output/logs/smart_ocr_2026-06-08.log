@@ -2562,3 +2562,1149 @@
 2026-06-08 12:25:21 | INFO     | __main__:132 — Pipeline complete: 6/6 invoices extracted
 2026-06-08 12:25:21 | INFO     | src.excel_exporter.exporter:144 — Exporting 6 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
 2026-06-08 12:25:21 | INFO     | src.excel_exporter.exporter:196 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 12:45:40 | INFO     | __main__:119 — Found 1 PDF file(s) to process
+2026-06-08 12:45:40 | INFO     | __main__:75 — =======================================================
+2026-06-08 12:45:40 | INFO     | __main__:76 — Processing: external_1.pdf
+2026-06-08 12:45:40 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 12:45:40 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 12:45:40 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 12:45:40 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 12:45:40 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 12:45:40 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 12:45:40 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 12:45:40 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:378 —   vendor_name          → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:378 —   vendor_address       → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:378 —   buyer_name           → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:378 —   buyer_address        → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   invoice_number       → BPXINV-00550
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   invoice_date         → 23.05.2021
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   due_date             → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   purchase_order       → TERMS
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   vendor_gstin         → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   vendor_pan           → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   subtotal             → 596.45
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   tax_amount           → 50.00
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   total_amount         → 12.45
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:395 —   currency             → (not found)
+2026-06-08 12:45:40 | DEBUG    | src.ocr_engine.field_extractor:402 —   line_items          → 15 row(s)
+2026-06-08 12:45:40 | INFO     | src.ocr_engine.field_extractor:407 — Field extraction complete: 6/14 fields found
+2026-06-08 12:45:40 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 12:45:40 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 12:45:40 | INFO     | __main__:131 — =======================================================
+2026-06-08 12:45:40 | INFO     | __main__:132 — Pipeline complete: 1/1 invoices extracted
+2026-06-08 12:45:40 | INFO     | src.excel_exporter.exporter:144 — Exporting 1 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 12:45:41 | INFO     | src.excel_exporter.exporter:196 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 12:54:15 | INFO     | __main__:119 — Found 2 PDF file(s) to process
+2026-06-08 12:54:15 | INFO     | __main__:75 — =======================================================
+2026-06-08 12:54:15 | INFO     | __main__:76 — Processing: external_1.pdf
+2026-06-08 12:54:15 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 12:54:15 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 12:54:15 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 12:54:15 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 12:54:15 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 12:54:16 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   invoice_number       → BPXINV-00550
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   invoice_date         → 23.05.2021
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   due_date             → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:452 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   vendor_gstin         → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   vendor_pan           → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   subtotal             → 596.45
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   tax_amount           → 50.00
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   total_amount         → 12.45
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   currency             → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:476 —   line_items          → 15 row(s)
+2026-06-08 12:54:16 | INFO     | src.ocr_engine.field_extractor:481 — Field extraction complete: 6/14 fields found
+2026-06-08 12:54:16 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 12:54:16 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 12:54:16 | INFO     | __main__:75 — =======================================================
+2026-06-08 12:54:16 | INFO     | __main__:76 — Processing: external_2.pdf
+2026-06-08 12:54:16 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 12:54:16 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 12:54:16 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 12:54:16 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 12:54:16 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   invoice_number       → 1213
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   invoice_date         → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   due_date             → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   purchase_order       → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   vendor_gstin         → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   vendor_pan           → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   subtotal             → 255.39
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   tax_amount           → 2809.30
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   total_amount         → 9.30
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:463 —   currency             → (not found)
+2026-06-08 12:54:16 | DEBUG    | src.ocr_engine.field_extractor:476 —   line_items          → 6 row(s)
+2026-06-08 12:54:16 | INFO     | src.ocr_engine.field_extractor:481 — Field extraction complete: 4/14 fields found
+2026-06-08 12:54:16 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 12:54:16 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 12:54:16 | INFO     | __main__:131 — =======================================================
+2026-06-08 12:54:16 | INFO     | __main__:132 — Pipeline complete: 2/2 invoices extracted
+2026-06-08 12:54:16 | INFO     | src.excel_exporter.exporter:180 — Exporting 2 invoice(s) to output\excel\external_test.xlsx
+2026-06-08 12:54:16 | INFO     | src.excel_exporter.exporter:244 — Excel workbook saved → output\excel\external_test.xlsx
+2026-06-08 12:59:26 | WARNING  | __main__:58 — Input path does not exist: data\samples\external_*.pdf
+2026-06-08 12:59:26 | ERROR    | __main__:61 — No valid PDF files found to process.
+2026-06-08 13:00:02 | INFO     | __main__:119 — Found 5 PDF file(s) to process
+2026-06-08 13:00:02 | INFO     | __main__:75 — =======================================================
+2026-06-08 13:00:02 | INFO     | __main__:76 — Processing: external_1.pdf
+2026-06-08 13:00:02 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:00:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:00:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:00:02 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:00:02 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → BPXINV-00550
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 23.05.2021
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:455 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 596.45
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 50.00
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 12.45
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:00:03 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 6/14 fields found
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:00:03 | INFO     | __main__:75 — =======================================================
+2026-06-08 13:00:03 | INFO     | __main__:76 — Processing: external_2.pdf
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → 1213
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 255.39
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 2809.30
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 9.30
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 6 row(s)
+2026-06-08 13:00:03 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 4/14 fields found
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:00:03 | INFO     | __main__:75 — =======================================================
+2026-06-08 13:00:03 | INFO     | __main__:76 — Processing: external_3.pdf
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → Caitlin Roberts
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 27.08.2019
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:448 —   due_date             → 27.09.2019 (from header table)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:00:03 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:00:03 | INFO     | __main__:75 — =======================================================
+2026-06-08 13:00:03 | INFO     | __main__:76 — Processing: external_4.pdf
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:00:03 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 0 row(s)
+2026-06-08 13:00:03 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 0/14 fields found
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 13:00:03 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:00:03 | INFO     | __main__:75 — =======================================================
+2026-06-08 13:00:03 | INFO     | __main__:76 — Processing: external_5.pdf
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 13:00:03 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 13:00:03 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 13:00:04 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 13:00:04 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → tapino
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 24.06.2020
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:00:04 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → €
+2026-06-08 13:00:04 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:00:04 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 13:00:04 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:00:04 | INFO     | __main__:131 — =======================================================
+2026-06-08 13:00:04 | INFO     | __main__:132 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 13:00:04 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to output\excel\external_full_test.xlsx
+2026-06-08 13:00:04 | INFO     | src.excel_exporter.exporter:244 — Excel workbook saved → output\excel\external_full_test.xlsx
+2026-06-08 13:29:06 | INFO     | __main__:133 — Found 5 PDF file(s) to process
+2026-06-08 13:29:06 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:29:06 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 13:29:06 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:29:06 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:29:06 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:29:06 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:29:06 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:29:06 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → BPXINV-00550
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 23.05.2021
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:455 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 596.45
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 50.00
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 12.45
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:29:07 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 6/14 fields found
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:29:07 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:29:07 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → 1213
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 255.39
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 2809.30
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 9.30
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 6 row(s)
+2026-06-08 13:29:07 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 4/14 fields found
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:29:07 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:29:07 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → Caitlin Roberts
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 27.08.2019
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:448 —   due_date             → 27.09.2019 (from header table)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:29:07 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:29:07 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:29:07 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 0 row(s)
+2026-06-08 13:29:07 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 0/14 fields found
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:29:07 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:29:07 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 13:29:07 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 13:29:07 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → tapino
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 24.06.2020
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:29:07 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → €
+2026-06-08 13:29:07 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 13:29:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:29:07 | INFO     | __main__:145 — =======================================================
+2026-06-08 13:29:07 | INFO     | __main__:146 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 13:29:07 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 13:30:01 | INFO     | __main__:133 — Found 5 PDF file(s) to process
+2026-06-08 13:30:01 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:30:01 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → BPXINV-00550
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 23.05.2021
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:455 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 596.45
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 50.00
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 12.45
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:30:01 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:30:01 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 6/14 fields found
+2026-06-08 13:30:01 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 13:30:01 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:30:01 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:30:01 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 13:30:01 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:30:01 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → 1213
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 255.39
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 2809.30
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 9.30
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 6 row(s)
+2026-06-08 13:30:02 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 4/14 fields found
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:30:02 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:30:02 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → Caitlin Roberts
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 27.08.2019
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:448 —   due_date             → 27.09.2019 (from header table)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:30:02 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:30:02 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:30:02 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 0 row(s)
+2026-06-08 13:30:02 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 0/14 fields found
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:30:02 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:30:02 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 13:30:02 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 13:30:02 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → tapino
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 24.06.2020
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   purchase_order       → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → (not found)
+2026-06-08 13:30:02 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → €
+2026-06-08 13:30:02 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 3/14 fields found
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 13:30:02 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:30:02 | INFO     | __main__:145 — =======================================================
+2026-06-08 13:30:02 | INFO     | __main__:146 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 13:30:02 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 13:30:02 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 13:37:46 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:37:46 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:37:46 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:37:46 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:37:46 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:37:46 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:37:46 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:37:46 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_name          → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:422 —   vendor_address       → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_name           → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:422 —   buyer_address        → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_number       → BPXINV-00550
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   invoice_date         → 23.05.2021
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   due_date             → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:455 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_gstin         → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   vendor_pan           → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   subtotal             → 596.45
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   tax_amount           → 50.00
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   total_amount         → 12.45
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:467 —   currency             → (not found)
+2026-06-08 13:37:46 | DEBUG    | src.ocr_engine.field_extractor:480 —   line_items          → 15 row(s)
+2026-06-08 13:37:46 | INFO     | src.ocr_engine.field_extractor:485 — Field extraction complete: 6/14 fields found
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Bioplex
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → Roger Bigot
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → bonbono
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → BPXINV-00550
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → 23.05.2021
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:481 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → 4.50
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → 6.45
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → 0.95
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 15 row(s)
+2026-06-08 13:40:31 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 9/14 fields found
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 13:40:31 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 13:40:31 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Invoice    No.   1213
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → La Galerie
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → 1213
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → 3.91
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → 5.39
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → 9.30
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:40:31 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 6 row(s)
+2026-06-08 13:40:31 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 6/14 fields found
+2026-06-08 13:42:25 | INFO     | __main__:133 — Found 5 PDF file(s) to process
+2026-06-08 13:42:25 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:42:25 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Bioplex
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → Roger Bigot
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → bonbono
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → BPXINV-00550
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → 23.05.2021
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:481 —   purchase_order       → BPXPO-00536 (from header table)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → 5964.50
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → 596.45
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → 6610.95
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 15 row(s)
+2026-06-08 13:42:25 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 9/14 fields found
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:42:25 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:42:25 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Invoice    No.   1213
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → La Galerie
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → 1213
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → 2553.91
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → 255.39
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → 2809.30
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 6 row(s)
+2026-06-08 13:42:25 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 6/14 fields found
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:42:25 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:42:25 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Date: 27.08.2019    
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → 27.08.2019
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:474 —   due_date             → 27.09.2019 (from header table)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:42:25 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 15 row(s)
+2026-06-08 13:42:25 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 3/14 fields found
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 13:42:25 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:42:25 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:42:25 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 13:42:25 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:42:25 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 13:42:26 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Neid                                                                 
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → e       October 12, 2021     Obacht AG           Same as recipient
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 0 row(s)
+2026-06-08 13:42:26 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 2/14 fields found
+2026-06-08 13:42:26 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 13:42:26 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:42:26 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:42:26 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 13:42:26 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 13:42:26 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 13:42:26 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 13:42:26 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 13:42:26 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          →                                                                                     
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → tapino
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → 24.06.2020
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → (not found)
+2026-06-08 13:42:26 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → €
+2026-06-08 13:42:26 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 4/14 fields found
+2026-06-08 13:42:26 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 13:42:26 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:42:26 | INFO     | __main__:145 — =======================================================
+2026-06-08 13:42:26 | INFO     | __main__:146 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 13:42:26 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 13:42:26 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 13:48:47 | INFO     | __main__:133 — Found 2 PDF file(s) to process
+2026-06-08 13:48:47 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:48:47 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          → Neid                                                                 
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → e       October 12, 2021     Obacht AG           Same as recipient
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:506 —   line_items          → 0 row(s)
+2026-06-08 13:48:47 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 2/14 fields found
+2026-06-08 13:48:47 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 13:48:47 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:48:47 | INFO     | __main__:89 — =======================================================
+2026-06-08 13:48:47 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 13:48:47 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 13:48:47 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_name          →                                                                                     
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   vendor_address       → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_name           → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:448 —   buyer_address        → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_number       → tapino
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   invoice_date         → 24.06.2020
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   due_date             → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   purchase_order       → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_gstin         → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   vendor_pan           → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   subtotal             → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   tax_amount           → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   total_amount         → (not found)
+2026-06-08 13:48:47 | DEBUG    | src.ocr_engine.field_extractor:493 —   currency             → €
+2026-06-08 13:48:47 | INFO     | src.ocr_engine.field_extractor:511 — Field extraction complete: 4/14 fields found
+2026-06-08 13:48:47 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 13:48:47 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 13:48:47 | INFO     | __main__:145 — =======================================================
+2026-06-08 13:48:47 | INFO     | __main__:146 — Pipeline complete: 2/2 invoices extracted
+2026-06-08 13:48:47 | INFO     | src.excel_exporter.exporter:180 — Exporting 2 invoice(s) to output\excel\external_4_5.xlsx
+2026-06-08 13:48:47 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → output\excel\external_4_5.xlsx
+2026-06-08 14:15:11 | INFO     | __main__:144 — Found 1 PDF file(s) to process
+2026-06-08 14:15:11 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:15:11 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:15:11 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:15:11 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:15:11 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:15:11 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:15:11 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:15:11 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:15:13 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:15:13 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:15:17 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:15:17 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:15:17 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:15:17 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:15:17 | INFO     | __main__:157 — Pipeline complete: 1/1 invoices extracted
+2026-06-08 14:15:17 | INFO     | src.excel_exporter.exporter:180 — Exporting 1 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:15:17 | WARNING  | src.excel_exporter.exporter:254 — Original file was locked (likely open in Excel). Saved as fallback → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices_1780908317.xlsx
+2026-06-08 14:15:23 | INFO     | __main__:144 — Found 1 PDF file(s) to process
+2026-06-08 14:15:23 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:15:23 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:15:23 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:15:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:15:23 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:15:23 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:15:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:15:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:15:25 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:15:25 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:15:47 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 15 line items.
+2026-06-08 14:15:47 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:15:47 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:15:47 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:15:47 | INFO     | __main__:157 — Pipeline complete: 1/1 invoices extracted
+2026-06-08 14:15:47 | INFO     | src.excel_exporter.exporter:180 — Exporting 1 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:15:47 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:28:22 | INFO     | __main__:144 — Found 5 PDF file(s) to process
+2026-06-08 14:28:22 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:28:22 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 14:28:22 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 14:28:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 14:28:22 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 14:28:22 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:28:22 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 14:28:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 14:28:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 14:28:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:28:24 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:28:24 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_1.pdf' to Gemini for semantic extraction...
+2026-06-08 14:28:27 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:28:27 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 14:28:27 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:28:27 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:28:27 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 14:28:27 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 14:28:27 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 14:28:27 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 14:28:27 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:28:27 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 14:28:27 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 14:28:27 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 14:28:27 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:28:27 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:28:27 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_2.pdf' to Gemini for semantic extraction...
+2026-06-08 14:28:30 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:28:30 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 14:28:30 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:28:30 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:28:30 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:28:30 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:28:30 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:28:30 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:28:30 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:28:30 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:28:30 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:28:30 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:28:30 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:28:34 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:28:34 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:28:34 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:28:34 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:28:34 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 14:28:34 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 14:28:34 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 14:28:34 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:28:34 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 14:28:34 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 14:28:34 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:28:34 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:28:34 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_4.pdf' to Gemini for semantic extraction...
+2026-06-08 14:28:47 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 7 line items.
+2026-06-08 14:28:47 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 14:28:47 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:28:47 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:28:47 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 14:28:47 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 14:28:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 14:28:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 14:28:47 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 14:28:47 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 14:28:47 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 14:28:48 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 14:28:48 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 14:28:48 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 14:28:48 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 14:28:48 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:28:48 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_5.pdf' to Gemini for semantic extraction...
+2026-06-08 14:29:18 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 21 line items.
+2026-06-08 14:29:18 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 14:29:18 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:29:18 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:29:18 | INFO     | __main__:157 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 14:29:18 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:29:18 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:30:14 | INFO     | __main__:144 — Found 5 PDF file(s) to process
+2026-06-08 14:30:15 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:30:15 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 14:30:15 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 14:30:15 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 14:30:15 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 14:30:15 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:30:15 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 14:30:15 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 14:30:15 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 14:30:15 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:30:17 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:30:17 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_1.pdf' to Gemini for semantic extraction...
+2026-06-08 14:30:23 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:30:23 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 14:30:23 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:30:23 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:30:23 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 14:30:23 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 14:30:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 14:30:23 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 14:30:23 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:30:23 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 14:30:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 14:30:23 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 14:30:23 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:30:23 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:30:23 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_2.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:07 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: [WinError 10054] An existing connection was forcibly closed by the remote host
+2026-06-08 14:38:07 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 14:38:07 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:07 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:07 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:38:07 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:38:07 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:38:07 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:38:07 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:38:08 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:38:08 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:38:08 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:08 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:17 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:38:17 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:38:17 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:17 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:17 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 14:38:17 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 14:38:17 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 14:38:17 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:38:17 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 14:38:18 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 14:38:18 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:38:18 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:18 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_4.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:20 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:38:20 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 14:38:20 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:20 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:20 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 14:38:20 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 14:38:20 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 14:38:20 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 14:38:20 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 14:38:20 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 14:38:20 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:20 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_5.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:24 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:38:24 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 14:38:24 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:24 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:38:24 | INFO     | __main__:157 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 14:38:24 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:38:24 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:38:26 | INFO     | __main__:144 — Found 5 PDF file(s) to process
+2026-06-08 14:38:26 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:26 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 14:38:26 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 14:38:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 14:38:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 14:38:26 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:38:26 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 14:38:27 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 14:38:27 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 14:38:27 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:38:28 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:28 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_1.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:32 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:38:32 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 14:38:32 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:32 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:32 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 14:38:32 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 14:38:32 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 14:38:32 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 14:38:32 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:38:32 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 14:38:33 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 14:38:33 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 14:38:33 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:38:33 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:33 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_2.pdf' to Gemini for semantic extraction...
+2026-06-08 14:38:50 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 10 line items.
+2026-06-08 14:38:50 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 14:38:50 | WARNING  | src.data_cleaner.normalizer:106 — Could not parse date: '30 days after receipt'
+2026-06-08 14:38:50 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:38:50 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:38:50 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:38:50 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:38:50 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:38:50 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:38:50 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:38:50 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:38:50 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:38:50 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:38:50 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:39:13 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 15 line items.
+2026-06-08 14:39:13 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:39:13 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:39:13 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:39:13 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 14:39:13 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 14:39:13 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 14:39:13 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:39:13 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 14:39:14 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 14:39:14 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:39:14 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:39:14 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_4.pdf' to Gemini for semantic extraction...
+2026-06-08 14:39:17 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:39:17 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 14:39:17 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:39:17 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:39:17 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 14:39:17 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 14:39:17 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 14:39:17 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 14:39:17 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 14:39:17 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 14:39:17 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 14:39:17 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 14:39:17 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 14:39:18 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 14:39:18 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 14:39:18 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:39:18 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_5.pdf' to Gemini for semantic extraction...
+2026-06-08 14:39:21 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:39:21 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 14:39:21 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:39:21 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:39:21 | INFO     | __main__:157 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 14:39:21 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:39:21 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:43:29 | INFO     | __main__:144 — Found 5 PDF file(s) to process
+2026-06-08 14:43:29 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:43:29 | INFO     | __main__:90 — Processing: external_1.pdf
+2026-06-08 14:43:29 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_1.pdf
+2026-06-08 14:43:29 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1361 chars → TEXT
+2026-06-08 14:43:29 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    1076 chars → TEXT
+2026-06-08 14:43:29 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:43:29 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_1.pdf
+2026-06-08 14:43:30 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5867 chars, 2 table(s)
+2026-06-08 14:43:30 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5125 chars, 1 table(s)
+2026-06-08 14:43:30 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:43:32 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:43:32 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_1.pdf' to Gemini for semantic extraction...
+2026-06-08 14:44:38 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 28 line items.
+2026-06-08 14:44:38 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_1.pdf
+2026-06-08 14:44:38 | WARNING  | src.data_cleaner.normalizer:106 — Could not parse date: 'Due after 30 days'
+2026-06-08 14:44:38 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:44:38 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:44:38 | INFO     | __main__:90 — Processing: external_2.pdf
+2026-06-08 14:44:38 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_2.pdf
+2026-06-08 14:44:38 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:     655 chars → TEXT
+2026-06-08 14:44:38 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:     370 chars → TEXT
+2026-06-08 14:44:38 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (2/2 text pages)
+2026-06-08 14:44:38 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 2 text page(s) in external_2.pdf
+2026-06-08 14:44:38 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 4 table(s)
+2026-06-08 14:44:38 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5108 chars, 1 table(s)
+2026-06-08 14:44:38 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 2 pages processed
+2026-06-08 14:44:38 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:44:38 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_2.pdf' to Gemini for semantic extraction...
+2026-06-08 14:45:26 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 10 line items.
+2026-06-08 14:45:26 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_2.pdf
+2026-06-08 14:45:26 | WARNING  | src.data_cleaner.normalizer:106 — Could not parse date: 'Due 30 days after receipt'
+2026-06-08 14:45:26 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:45:26 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:45:26 | INFO     | __main__:90 — Processing: external_3.pdf
+2026-06-08 14:45:26 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_3.pdf
+2026-06-08 14:45:26 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1376 chars → TEXT
+2026-06-08 14:45:26 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:45:26 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_3.pdf
+2026-06-08 14:45:26 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5119 chars, 2 table(s)
+2026-06-08 14:45:26 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:45:26 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:45:26 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_3.pdf' to Gemini for semantic extraction...
+2026-06-08 14:45:55 | ERROR    | src.ocr_engine.llm_extractor:100 — LLM Extraction failed: 503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand are usually temporary. Please try again later.', 'status': 'UNAVAILABLE'}}
+2026-06-08 14:45:55 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_3.pdf
+2026-06-08 14:45:55 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:45:55 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:45:55 | INFO     | __main__:90 — Processing: external_4.pdf
+2026-06-08 14:45:55 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_4.pdf
+2026-06-08 14:45:55 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1055 chars → TEXT
+2026-06-08 14:45:55 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (1/1 text pages)
+2026-06-08 14:45:55 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 1 text page(s) in external_4.pdf
+2026-06-08 14:45:55 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5099 chars, 1 table(s)
+2026-06-08 14:45:55 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 1 pages processed
+2026-06-08 14:45:55 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:45:55 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_4.pdf' to Gemini for semantic extraction...
+2026-06-08 14:46:49 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 7 line items.
+2026-06-08 14:46:49 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_4.pdf
+2026-06-08 14:46:49 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:46:49 | INFO     | __main__:89 — =======================================================
+2026-06-08 14:46:49 | INFO     | __main__:90 — Processing: external_5.pdf
+2026-06-08 14:46:49 | INFO     | src.pdf_processor.classifier:63 — Classifying PDF: external_5.pdf
+2026-06-08 14:46:49 | DEBUG    | src.pdf_processor.classifier:77 —   Page   1:    1089 chars → TEXT
+2026-06-08 14:46:49 | DEBUG    | src.pdf_processor.classifier:77 —   Page   2:    2633 chars → TEXT
+2026-06-08 14:46:49 | DEBUG    | src.pdf_processor.classifier:77 —   Page   3:     924 chars → TEXT
+2026-06-08 14:46:49 | INFO     | src.pdf_processor.classifier:93 — Classification complete → TEXT (3/3 text pages)
+2026-06-08 14:46:49 | INFO     | src.pdf_processor.text_extractor:74 — Extracting text from 3 text page(s) in external_5.pdf
+2026-06-08 14:46:49 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   1:  5216 chars, 0 table(s)
+2026-06-08 14:46:49 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   2:  5557 chars, 0 table(s)
+2026-06-08 14:46:50 | DEBUG    | src.pdf_processor.text_extractor:97 —   Page   3:  5099 chars, 0 table(s)
+2026-06-08 14:46:50 | INFO     | src.pdf_processor.text_extractor:104 — Extraction complete — 3 pages processed
+2026-06-08 14:46:50 | INFO     | __main__:125 — GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.
+2026-06-08 14:46:50 | INFO     | src.ocr_engine.llm_extractor:68 — Sending invoice 'external_5.pdf' to Gemini for semantic extraction...
+2026-06-08 14:47:40 | INFO     | src.ocr_engine.llm_extractor:144 — LLM Extraction successful. Found 21 line items.
+2026-06-08 14:47:40 | INFO     | src.data_cleaner.normalizer:152 — Normalizing invoice: external_5.pdf
+2026-06-08 14:47:40 | INFO     | src.data_cleaner.normalizer:173 — Normalization complete
+2026-06-08 14:47:40 | INFO     | __main__:156 — =======================================================
+2026-06-08 14:47:40 | INFO     | __main__:157 — Pipeline complete: 5/5 invoices extracted
+2026-06-08 14:47:40 | INFO     | src.excel_exporter.exporter:180 — Exporting 5 invoice(s) to C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx
+2026-06-08 14:47:40 | INFO     | src.excel_exporter.exporter:245 — Excel workbook saved → C:\Users\Avi Verma\Documents\Code\Smart-OCR\output\excel\invoices.xlsx

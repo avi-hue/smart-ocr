@@ -42,8 +42,22 @@ log = get_logger(__name__)
 
 def collect_pdfs(input_paths: list[Path]) -> list[Path]:
     """Collect all PDF files from a list of paths (files or directories)."""
+    import glob
     pdfs = []
     for path in input_paths:
+        path_str = str(path)
+        
+        # Handle manual globbing (important for Windows CMD/PowerShell)
+        if "*" in path_str or "?" in path_str:
+            matched = glob.glob(path_str, recursive=True)
+            if not matched:
+                log.warning("Input path pattern did not match any files: {}", path_str)
+            for m in matched:
+                p = Path(m)
+                if p.is_file() and p.suffix.lower() == ".pdf":
+                    pdfs.append(p)
+            continue
+
         if path.is_file():
             if path.suffix.lower() != ".pdf":
                 log.warning("Input file is not a PDF, skipping: {}", path)
@@ -100,12 +114,23 @@ def process_pdf(pdf_path: Path) -> ExtractedInvoice | None:
         log.warning("No text extracted from '{}'", pdf_path.name)
         return None
 
-    # Step 3: Extract structured invoice fields
-    invoice = extract_invoice_fields(
-        text=doc_content.full_text,
-        source_file=pdf_path,
-        tables=doc_content.all_tables,
-    )
+    # Step 3: Extract structured invoice fields (LLM preferred, spatial fallback)
+    import os
+    from dotenv import load_dotenv
+    from src.ocr_engine.llm_extractor import extract_invoice_via_llm
+    
+    load_dotenv() # Load variables from .env file
+
+    if os.environ.get("GEMINI_API_KEY"):
+        log.info("GEMINI_API_KEY detected. Routing to LLM Semantic Extractor.")
+        invoice = extract_invoice_via_llm(text=doc_content.full_text, source_file=pdf_path)
+    else:
+        log.info("No LLM API key detected. Using Regex/Spatial Extractor.")
+        invoice = extract_invoice_fields(
+            text=doc_content.full_text,
+            source_file=pdf_path,
+            tables=doc_content.all_tables,
+        )
 
     # Step 4: Normalize
     invoice = normalize_invoice(invoice)

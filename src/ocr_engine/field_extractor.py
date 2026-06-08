@@ -46,6 +46,7 @@ class LineItem:
     sgst_rate: Optional[str] = None
     sgst_amount: Optional[str] = None
     line_total: Optional[str] = None
+    extra_fields: Dict[str, str] = field(default_factory=dict)
 
 
 @dataclass
@@ -81,6 +82,7 @@ class ExtractedInvoice:
 
     # Meta
     extraction_confidence: Dict[str, float] = field(default_factory=dict)
+    extra_fields: Dict[str, str] = field(default_factory=dict)
 
     def to_flat_dict(self) -> dict:
         """Return all scalar fields as a flat dictionary (for Excel row)."""
@@ -100,6 +102,7 @@ class ExtractedInvoice:
             "tax_amount"    : self.tax_amount,
             "total_amount"  : self.total_amount,
             "currency"      : self.currency,
+            **self.extra_fields,
         }
 
 
@@ -131,7 +134,7 @@ def _extract_line_items_from_tables(
     items: List[LineItem] = []
     HEADER_KEYWORDS = {"description", "item", "particulars", "qty", "quantity",
                        "amount", "price", "total", "rate", "hsn", "sac",
-                       "cgst", "sgst", "vat", "gst", "discount", "mrp"}
+                       "cgst", "sgst", "vat", "gst", "discount", "mrp", "product", "model"}
 
     for table in tables:
         if not table or len(table) < 2:
@@ -205,6 +208,7 @@ def _extract_line_items_from_tables(
             elif (
                 ("price" in header and "unit" in header)
                 or ("price" in header and "list" in header)
+                or ("price" in header and "item" in header)
                 or header in ("mrp", "rate", "price")
                 or ("rate" in header and "tax" not in header and "%" not in header)
             ):
@@ -234,6 +238,12 @@ def _extract_line_items_from_tables(
                 or "amt" in header
             ):
                 col_map.setdefault("line_total", idx)
+            else:
+                # Capture any unknown column headers exactly as they appear
+                # Title-case it for aesthetics (e.g. "salesperson" -> "Salesperson")
+                clean_header = str(table[0][idx]).strip().title()
+                if clean_header and clean_header not in col_map:
+                    col_map[clean_header] = idx
 
         def cell(row, key):
             idx = col_map.get(key)
@@ -246,6 +256,18 @@ def _extract_line_items_from_tables(
             # Skip empty rows
             if not any(row):
                 continue
+            
+            # Gather extra fields
+            extras = {}
+            known_keys = {"sr_no", "description", "hsn_sac_code", "quantity", 
+                          "unit_price", "discount", "tax_rate", "tax_amount", 
+                          "cgst_rate", "cgst_amount", "sgst_rate", "sgst_amount", "line_total"}
+            for key, idx in col_map.items():
+                if key not in known_keys and idx < len(row):
+                    val = row[idx]
+                    if val:
+                        extras[key] = str(val).strip()
+
             items.append(LineItem(
                 sr_no        = cell(row, "sr_no"),
                 description  = cell(row, "description"),
@@ -260,10 +282,32 @@ def _extract_line_items_from_tables(
                 sgst_rate    = cell(row, "sgst_rate"),
                 sgst_amount  = cell(row, "sgst_amount"),
                 line_total   = cell(row, "line_total"),
+                extra_fields = extras,
             ))
         break  # use the first matching table
 
     return items
+
+
+def _extract_header_table_fields(tables: list) -> dict:
+    """
+    Look for 2-row tables that contain summary information like 'P.O. NUMBER',
+    'TERMS', 'SALESPERSON', 'DATE', etc., and extract them as key-value pairs.
+    """
+    extracted = {}
+    for table in tables:
+        # A typical header table has exactly 2 rows (Headers, Values)
+        # or it's a vertical table (Key, Value)
+        if len(table) == 2:
+            headers = [str(c).strip().lower() for c in table[0] if c]
+            # Verify it's not a line-item table
+            if not any(kw in " ".join(headers) for kw in ("description", "qty", "quantity")):
+                for idx, header in enumerate(table[0]):
+                    if header and idx < len(table[1]):
+                        val = table[1][idx]
+                        if val:
+                            extracted[header.strip().lower()] = str(val).strip()
+    return extracted
 
 def _extract_party_info(text: str, tables: list | None = None) -> dict:
     """
@@ -312,18 +356,43 @@ def _extract_party_info(text: str, tables: list | None = None) -> dict:
 
     # ── Strategy 2: character-column split on raw text (fallback) ─────────────
     header_match = re.search(
-        r"(?i)([ \t]*)(bill\s+from:)([ \t]*)(bill\s+to:)([ \t]*)\n",
+        r"(?i)([ \t]*)(bill\s+from:|from:|vendor:)([ \t]*)(bill\s+to:|to:|ship\s+to:)([ \t]*)\n",
         text
     )
     if not header_match:
-        m = re.search(r"(?i)(?:from|vendor|seller)[:\s]+([^\n]+)", text)
-        if m: result["vendor_name"] = m.group(1).strip()
-        m = re.search(r"(?i)(?:bill\s+to|sold\s+to|customer|buyer)[:\s]+([^\n]+)", text)
-        if m: result["buyer_name"] = m.group(1).strip()
+        # Check for column split where Vendor is missing but TO: and SHIP TO: exist (like external_1)
+        alt_match = re.search(r"(?i)([ \t]*)(to:)([ \t]*)(ship\s+to:)([ \t]*)\n", text)
+        if alt_match:
+            split_pos = alt_match.group(0).lower().index("ship to:")
+            rest = text[alt_match.end():]
+            lines = rest.split("\n")[:4]
+            left_lines = [line[:split_pos].strip() for line in lines if line[:split_pos].strip()]
+            if left_lines:
+                result["buyer_name"] = left_lines[0]
+                result["buyer_address"] = left_lines[1] if len(left_lines) > 1 else None
+        else:
+            # Simple regex fallback (like external_2)
+            m = re.search(r"(?i)(?:from|vendor|seller)[: \t]*\n?([^\n]+)", text)
+            if m: result["vendor_name"] = m.group(1).strip()
+            
+            m = re.search(r"(?i)(?:bill\s+to|sold\s+to|customer|buyer|to)[: \t]*\n([^\n]+)", text)
+            if m: result["buyer_name"] = m.group(1).strip()
+
+        # If vendor is still missing, the first non-empty line of the PDF is almost always the Vendor
+        if not result["vendor_name"]:
+            first_line = text.strip().split("\n")[0]
+            if first_line and "invoice" not in first_line.lower():
+                result["vendor_name"] = first_line
+            elif len(text.strip().split("\n")) > 1:
+                result["vendor_name"] = text.strip().split("\n")[0].replace("INVOICE", "").strip() or text.strip().split("\n")[1]
+
         return result
 
     header_line = header_match.group(0)
-    split_pos   = header_line.lower().index("bill to:")
+    # find the start of the 'to' part
+    split_match = re.search(r"(?i)(bill\s+to:|to:|ship\s+to:)", header_line)
+    split_pos   = split_match.start() if split_match else len(header_line) // 2
+    
     rest        = text[header_match.end():]
     lines       = rest.split("\n")[:6]
 
@@ -366,6 +435,7 @@ def extract_invoice_fields(
     source_file = Path(source_file)
     invoice = ExtractedInvoice(source_file=source_file)
     confidence: Dict[str, float] = {}
+    extracted_data = {}
 
     # ── Party fields (table-aware extraction) ──────────────────────────────
     party = _extract_party_info(text, tables=tables)
@@ -377,6 +447,9 @@ def extract_invoice_fields(
         confidence[k] = 1.0 if party[k] else 0.0
         log.debug("  {:20} → {}", k, party[k] or "(not found)")
 
+    # Extract header table fields (for unstructured PO numbers, Salesperson, etc)
+    header_data = _extract_header_table_fields(tables or [])
+
     # ── Scalar fields via regex ──────────────────────────────────────────────
     field_map = {f.name: f for f in ALL_FIELDS}
 
@@ -386,8 +459,33 @@ def extract_invoice_fields(
         "subtotal", "tax_amount", "total_amount", "currency",
     ]
 
+    consumed_headers = set()
+
     for attr in scalar_attrs:
         inv_field = field_map.get(attr)
+        
+        # Check if the field was captured in header_data
+        header_match = False
+        for h_key, h_val in header_data.items():
+            # e.g., 'p.o. number' -> 'purchase_order'
+            if inv_field.name.replace("_", " ") in h_key or h_key.replace(".", "").replace(" ", "_") == inv_field.name:
+                setattr(invoice, attr, h_val)
+                confidence[attr] = 1.0
+                log.debug("  {:20} → {} (from header table)", attr, h_val)
+                header_match = True
+                consumed_headers.add(h_key)
+                break
+            if attr == "purchase_order" and "p.o." in h_key:
+                setattr(invoice, attr, h_val)
+                confidence[attr] = 1.0
+                log.debug("  {:20} → {} (from header table)", attr, h_val)
+                header_match = True
+                consumed_headers.add(h_key)
+                break
+        
+        if header_match:
+            continue
+
         if inv_field and inv_field.regex_hints:
             value = _try_patterns(text, inv_field)
             setattr(invoice, attr, value)
@@ -395,6 +493,12 @@ def extract_invoice_fields(
             log.debug("  {:20} → {}", attr, value or "(not found)")
         else:
             confidence[attr] = 0.0
+    
+    # Store any remaining header data into invoice extra_fields if we add it
+    invoice.extra_fields = {}
+    for h_key, h_val in header_data.items():
+        if h_key not in ["date", "due date"] and h_key not in consumed_headers:
+            invoice.extra_fields[h_key.title()] = h_val
 
     # ── Line items from tables ───────────────────────────────────────────────
     if tables:

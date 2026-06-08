@@ -2,8 +2,10 @@
 pymupdf                   # fitz: fast PDF text extraction (Python 3.13 compatible)
 pdfplumber                # layout-aware PDF parsing (tables, columns)
 
-# ─── OCR Engine ───────────────────────────────────────────────────────────────
+# ─── OCR & LLM Engine ──────────────────────────────────────────────────────────
 pytesseract               # Python wrapper for Tesseract OCR
+google-genai              # Official Google Gemini SDK for LLM extraction
+pydantic                  # Strict JSON schema validation for LLM output
 
 # ─── Image Processing ─────────────────────────────────────────────────────────
 opencv-python             # image preprocessing (deskew, threshold, denoise)

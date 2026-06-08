@@ -141,7 +141,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹10,000.00", "$5,000.00"],
         regex_hints=[
-            r"(?i)sub[\s\-]?total[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)sub[\s\-]?total[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
@@ -150,7 +150,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹1,800.00 (18% GST)"],
         regex_hints=[
-            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
@@ -159,8 +159,8 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹11,800.00", "$5,500.00"],
         regex_hints=[
-            r"(?i)(?:grand\s+)?\btotal(?:\s+amount)?(?:\s+due)?[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
-            r"(?i)amount\s+payable[^:\n]*[:\s]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)(?:grand\s+)?\btotal(?:\s+amount)?(?:\s+due)?[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)amount\s+payable[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
         ],
     ),
     InvoiceField(
