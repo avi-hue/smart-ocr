@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "stitch::extract-static-html": {
+      "source": "google-labs-code/stitch-skills",
+      "sourceType": "github",
+      "skillPath": "plugins/stitch-design/skills/extract-static-html/SKILL.md",
+      "computedHash": "6ddd90a8d1360d765a228749c3b4001b0c9631190cb8571fa6678707ae847454"
+    }
+  }
+}

@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Smart-OCR · Invoice Intelligence</title>
+  <meta name="description" content="AI-powered invoice data extraction — Tesseract OCR · Gemini AI · Export to Excel with precision"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+  <!-- ═══════════════════════════════ LUXURY TAILWIND CONFIG -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+                    colors: {
+            "primary":                  "rgb(var(--color-primary))",
+            "primary-container":        "rgb(var(--color-primary-container))",
+            "on-primary":               "rgb(var(--color-on-primary))",
+            "on-primary-container":     "rgb(var(--color-on-primary-container))",
+            "secondary":                "rgb(var(--color-secondary))",
+            "secondary-container":      "rgb(var(--color-secondary-container))",
+            "on-secondary":             "rgb(var(--color-on-secondary))",
+            "on-secondary-container":   "rgb(var(--color-on-secondary-container))",
+            "tertiary":                 "rgb(var(--color-tertiary))",
+            "tertiary-container":       "rgb(var(--color-tertiary-container))",
+            "on-tertiary":              "rgb(var(--color-on-tertiary))",
+            "on-tertiary-container":    "rgb(var(--color-on-tertiary-container))",
+            "error":                    "rgb(var(--color-error))",
+            "error-container":          "rgb(var(--color-error-container))",
+            "on-error":                 "rgb(var(--color-on-error))",
+            "on-error-container":       "rgb(var(--color-on-error-container))",
+            "background":               "rgb(var(--color-background))",
+            "on-background":            "rgb(var(--color-on-background))",
+            "surface":                  "rgb(var(--color-surface))",
+            "surface-dim":              "rgb(var(--color-surface-dim))",
+            "surface-bright":           "rgb(var(--color-surface-bright))",
+            "surface-container-lowest": "rgb(var(--color-surface-container-lowest))",
+            "surface-container-low":    "rgb(var(--color-surface-container-low))",
+            "surface-container":        "rgb(var(--color-surface-container))",
+            "surface-container-high":   "rgb(var(--color-surface-container-high))",
+            "surface-container-highest":"rgb(var(--color-surface-container-highest))",
+            "surface-variant":          "rgb(var(--color-surface-variant))",
+            "on-surface":               "rgb(var(--color-on-surface))",
+            "on-surface-variant":       "rgb(var(--color-on-surface-variant))",
+            "outline":                  "rgb(var(--color-outline))",
+            "outline-variant":          "rgb(var(--color-outline-variant))",
+            "inverse-surface":          "rgb(var(--color-inverse-surface))",
+            "inverse-on-surface":       "rgb(var(--color-inverse-on-surface))",
+          },
+          fontFamily: {
+            "headline": ["'Playfair Display'", "Georgia", "serif"],
+            "body":     ["Inter", "system-ui", "sans-serif"],
+            "mono":     ["'JetBrains Mono'", "monospace"],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- ═══════════════════════════════ LUXURY DESIGN SYSTEM CSS -->
+  <style>
+    /* ── Theme variables ── */
+        :root {
+      --color-primary: 212, 175, 55;
+      --color-primary-container: 26, 26, 26;
+      --color-on-primary: 249, 248, 246;
+      --color-on-primary-container: 249, 248, 246;
+      --color-secondary: 108, 104, 99;
+      --color-secondary-container: 235, 229, 222;
+      --color-on-secondary: 249, 248, 246;
+      --color-on-secondary-container: 26, 26, 26;
+      --color-tertiary: 26, 26, 26;
+      --color-tertiary-container: 235, 229, 222;
+      --color-on-tertiary: 249, 248, 246;
+      --color-on-tertiary-container: 26, 26, 26;
+      --color-error: 153, 27, 27;
+      --color-error-container: 254, 242, 242;
+      --color-on-error: 249, 248, 246;
+      --color-on-error-container: 153, 27, 27;
+      --color-background: 249, 248, 246;
+      --color-on-background: 26, 26, 26;
+      --color-surface: 249, 248, 246;
+      --color-surface-dim: 235, 229, 222;
+      --color-surface-bright: 255, 255, 255;
+      --color-surface-container-lowest: 255, 255, 255;
+      --color-surface-container-low: 249, 248, 246;
+      --color-surface-container: 240, 237, 232;
+      --color-surface-container-high: 235, 229, 222;
+      --color-surface-container-highest: 227, 221, 214;
+      --color-surface-variant: 235, 229, 222;
+      --color-on-surface: 26, 26, 26;
+      --color-on-surface-variant: 108, 104, 99;
+      --color-outline: 26, 26, 26;
+      --color-outline-variant: 26, 26, 26, 0.06;
+      --color-inverse-surface: 26, 26, 26;
+      --color-inverse-on-surface: 249, 248, 246;
+    }
+
+    html.dark {
+      --color-primary: 212, 175, 55;
+      --color-primary-container: 34, 34, 34;
+      --color-on-primary: 18, 18, 18;
+      --color-on-primary-container: 238, 238, 238;
+      --color-secondary: 158, 155, 152;
+      --color-secondary-container: 42, 40, 37;
+      --color-on-secondary: 18, 18, 18;
+      --color-on-secondary-container: 238, 238, 238;
+      --color-tertiary: 238, 238, 238;
+      --color-tertiary-container: 42, 40, 37;
+      --color-on-tertiary: 18, 18, 18;
+      --color-on-tertiary-container: 238, 238, 238;
+      --color-error: 239, 68, 68;
+      --color-error-container: 69, 10, 10;
+      --color-on-error: 254, 242, 242;
+      --color-on-error-container: 252, 165, 165;
+      --color-background: 18, 18, 18;
+      --color-on-background: 238, 238, 238;
+      --color-surface: 18, 18, 18;
+      --color-surface-dim: 30, 28, 26;
+      --color-surface-bright: 42, 40, 37;
+      --color-surface-container-lowest: 18, 18, 18;
+      --color-surface-container-low: 24, 22, 21;
+      --color-surface-container: 30, 28, 26;
+      --color-surface-container-high: 38, 36, 34;
+      --color-surface-container-highest: 50, 48, 46;
+      --color-surface-variant: 30, 28, 26;
+      --color-on-surface: 238, 238, 238;
+      --color-on-surface-variant: 158, 155, 152;
+      --color-outline: 238, 238, 238;
+      --color-outline-variant: 238, 238, 238, 0.06;
+      --color-inverse-surface: 238, 238, 238;
+      --color-inverse-on-surface: 18, 18, 18;
+    }
+
+    /* ── Base: Zero border-radius, luxury defaults ── */
+    *, *::before, *::after { box-sizing: border-box; border-radius: 0 !important; }
+    html { scroll-behavior: smooth; }
+    /* Smooth simultaneous theme transition — applied during theme switch only */
+    .theme-transitioning, .theme-transitioning *,
+    .theme-transitioning *::before, .theme-transitioning *::after {
+      transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+    }
+    /* Never override animation-driven or transform transitions */
+    .theme-transitioning .page,
+    .theme-transitioning .bar-flow,
+    .theme-transitioning .status-pulse,
+    .theme-transitioning .pulse-dot,
+    .theme-transitioning .blink {
+      transition: none !important;
+    }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: rgb(var(--color-background));
+      color: rgb(var(--color-on-background));
+    }
+
+    /* ── Font utilities ── */
+    .font-headline { font-family: 'Playfair Display', Georgia, serif !important; }
+    .font-mono { font-family: 'JetBrains Mono', monospace !important; }
+
+    /* ── Material Symbols (kept for JS-generated icon content) ── */
+    .material-symbols-outlined {
+      font-family: 'Material Symbols Outlined';
+      font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 20;
+      vertical-align: middle;
+      line-height: 1;
+    }
+
+    /* ══════════════════════════════════════ NAVIGATION */
+    .nav-item {
+      display: block;
+      padding: 13px 0 13px 12px;
+      font-family: 'Inter', sans-serif;
+      font-size: 9px;
+      font-weight: 500;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: rgb(var(--color-on-surface-variant));
+      border-bottom: 1px solid rgba(var(--color-outline-variant));
+      border-left: 2px solid transparent;
+      cursor: pointer;
+      transition: color 0.5s ease, border-left-color 0.5s ease;
+      white-space: nowrap;
+    }
+    .nav-item:hover { color: rgb(var(--color-on-surface)); }
+    .nav-item.active { color: rgb(var(--color-on-surface)); border-left-color: rgb(var(--color-primary)); }
+    .nav-item:last-of-type { border-bottom: none; }
+
+    /* ══════════════════════════════════════ PAGES */
+    .page { display: none; }
+    .page.active { display: block; animation: luxFadeUp 0.45s ease both; }
+    @keyframes luxFadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ══════════════════════════════════════ STAGGER */
+    .stagger-1 { animation: luxFadeUp 0.45s ease 0.04s both; }
+    .stagger-2 { animation: luxFadeUp 0.45s ease 0.10s both; }
+    .stagger-3 { animation: luxFadeUp 0.45s ease 0.17s both; }
+    .stagger-4 { animation: luxFadeUp 0.45s ease 0.24s both; }
+
+    /* ══════════════════════════════════════ BADGES (Luxury minimal) */
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 9px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+    .badge-success { color: rgb(var(--color-on-surface)); border: 1px solid rgb(var(--color-on-surface-variant)); }
+    .badge-warn    { color: rgb(var(--color-on-surface-variant)); border: 1px solid rgb(var(--color-on-surface-variant)); opacity: 0.8; }
+    .badge-error   { color: rgb(var(--color-error)); border: 1px solid rgb(var(--color-error)); }
+    .badge-info    { color: rgb(var(--color-primary)); border: 1px solid rgb(var(--color-primary)); }
+    .badge-run     { color: rgb(var(--color-primary)); border: 1px solid rgb(var(--color-primary)); background: rgba(212,175,55,0.06); }
+
+    /* ══════════════════════════════════════ LOG LINES */
+    .log-line { display: block; line-height: 1.9; }
+    .log-info    { color: rgb(var(--color-on-surface-variant)); opacity: 0.7; }
+    .log-success { color: rgb(var(--color-primary)); }
+    .log-warn    { color: rgb(var(--color-on-surface)); opacity: 0.85; }
+    .log-error   { color: rgb(var(--color-error)); }
+
+    /* ══════════════════════════════════════ GLASS-CARD (remapped to luxury card) */
+    /* app.js uses this class name; we remap it instead of a translucent dark bg */
+    .glass-card {
+      background: rgb(var(--color-surface));
+      border: 1px solid rgba(var(--color-outline-variant));
+    }
+    .glow-lift { transition: box-shadow 0.5s ease, transform 0.5s ease; }
+    .glow-lift:hover { transform: translateY(-1px); box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .glow-primary { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+    .gradient-text { color: rgb(var(--color-primary)); }
+
+    /* ══════════════════════════════════════ PROGRESS & BARS */
+    .progress-bar-fill { background: rgb(var(--color-primary)); }
+    .bar-flow {
+      background: linear-gradient(90deg, rgb(var(--color-primary)) 0%, rgb(var(--color-primary-container)) 50%, rgb(var(--color-primary)) 100%);
+      background-size: 200% 100%;
+      animation: barFlow 2.5s linear infinite;
+    }
+    @keyframes barFlow { from { background-position: 100% 0; } to { background-position: -100% 0; } }
+
+    /* ══════════════════════════════════════ PULSE (gold) */
+    .status-pulse, .pulse-dot { animation: goldPulse 2s ease-in-out infinite; }
+    @keyframes goldPulse { 0%,100% { opacity:1; } 50% { opacity:0.25; } }
+
+    /* ══════════════════════════════════════ BLINK CURSOR */
+    .blink { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ══════════════════════════════════════ DROP ZONE */
+    #drop-zone { transition: border-color 0.5s ease; }
+    #drop-zone.drag-over { border-color: rgb(var(--color-primary)) !important; border-style: solid !important; }
+    #drop-zone:hover .upload-sq { background: rgb(var(--color-primary)); }
+    #drop-zone:hover .upload-sq svg { color: rgb(var(--color-background)); }
+    .upload-sq { transition: background 0.7s ease; }
+    .upload-sq svg { transition: color 0.7s ease; }
+
+    /* ══════════════════════════════════════ FILE ENTRY ANIMATION */
+    @keyframes fileSlideIn { from { opacity:0; transform:translateX(-6px); } to { opacity:1; transform:translateX(0); } }
+    .file-entry { animation: fileSlideIn 0.3s ease; }
+
+    /* ══════════════════════════════════════ TOAST */
+    @keyframes toastIn { from { opacity:0; transform:translateX(110%); } to { opacity:1; transform:translateX(0); } }
+    .toast { animation: toastIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+
+    /* ══════════════════════════════════════ TABLE ROWS */
+    tbody tr { transition: background 0.3s ease; cursor: pointer; }
+    tbody tr:hover { background: rgb(var(--color-surface-container)); }
+
+    /* ══════════════════════════════════════ CUSTOM RANGE SLIDER */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      height: 4px;
+      background: rgba(212, 175, 55, 0.35);
+      outline: none;
+      cursor: pointer;
+      width: 100%;
+      margin: 12px 0 16px;
+      border-radius: 2px !important;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px; height: 16px;
+      background: rgb(212, 175, 55);
+      cursor: pointer;
+      border-radius: 50% !important;
+      transition: transform 0.2s ease;
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2);
+    }
+    input[type="range"]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 16px; height: 16px;
+      background: rgb(212, 175, 55);
+      border: none;
+      cursor: pointer;
+      border-radius: 50% !important;
+    }
+    input[type="range"]::-moz-range-track {
+      height: 4px;
+      background: rgba(212, 175, 55, 0.35);
+      border-radius: 2px;
+    }
+
+    /* ══════════════════════════════════════ LUXURY TOGGLE */
+    .luxury-toggle { position: relative; display: inline-block; }
+    .luxury-toggle input:checked ~ .toggle-track { background: rgb(var(--color-primary-container)); border-color: rgb(var(--color-primary-container)); }
+    .luxury-toggle input:checked ~ .toggle-track .toggle-thumb { transform: translateX(18px); background: rgb(var(--color-primary)); }
+    .toggle-track { width:40px; height:22px; border:1px solid rgb(var(--color-on-surface-variant)); background:transparent; transition: all 0.3s ease; position:relative; }
+    .toggle-thumb { position:absolute; top:3px; left:3px; width:14px; height:14px; background:rgb(var(--color-primary-container)); transition: all 0.3s ease; }
+
+    /* ══════════════════════════════════════ UNDERLINE INPUTS (Settings) */
+    .input-underline {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid rgb(var(--color-outline));
+      padding: 10px 0;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      color: rgb(var(--color-on-background));
+      outline: none;
+      transition: border-color 0.5s ease;
+    }
+    .input-underline:focus { border-bottom-color: rgb(var(--color-primary)); }
+    .input-underline::placeholder { font-family: 'Playfair Display', Georgia, serif; font-style: italic; color: rgb(var(--color-on-surface-variant)); }
+    .input-wrapper { border-bottom: 1px solid rgb(var(--color-outline)); transition: border-color 0.5s ease; }
+    .input-wrapper:focus-within { border-bottom-color: rgb(var(--color-primary)); }
+    .input-wrapper input { border: none !important; padding: 10px 0; background: transparent; }
+
+    /* ══════════════════════════════════════ SIDE DRAWER */
+    #side-drawer {
+      transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), visibility 0s linear 0.35s;
+      background: rgb(var(--color-background));
+      visibility: hidden;
+    }
+    #side-drawer.drawer-open {
+      transition: transform 0.35s cubic-bezier(0.25,0.46,0.45,0.94), visibility 0s linear 0s;
+      box-shadow: -20px 0 60px rgba(0,0,0,0.15);
+      border-left: 1px solid rgba(var(--color-outline-variant));
+      visibility: visible;
+    }
+
+    /* ══════════════════════════════════════ SCROLLBAR */
+    ::-webkit-scrollbar { width: 3px; height: 3px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(26,26,26,0.15); }
+    html.dark ::-webkit-scrollbar-thumb { background: rgba(238,238,238,0.15); }
+
+    /* ══════════════════════════════════════ CONFIDENCE BAR */
+    .conf-bar { height: 2px; background: rgba(var(--color-outline-variant)); overflow: hidden; }
+    .conf-bar-fill { height: 100%; transition: width 0.7s ease 0.1s; }
+
+    /* ══════════════════════════════════════ TAB INDICATOR */
+    #tab-indicator { background: rgb(var(--color-primary)); height: 1px; transition: all 0.4s cubic-bezier(0.25,0.46,0.45,0.94); }
+
+    /* ══════════════════════════════════════ GOLD SLIDE BUTTON (primary) */
+    .btn-primary {
+      position: relative; overflow: hidden;
+      background: rgb(var(--color-primary-container)); color: rgb(var(--color-on-primary-container));
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: box-shadow 0.5s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+    .btn-primary:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .btn-primary:disabled { opacity: 0.38; pointer-events: none; }
+    .btn-primary .gold-overlay {
+      position: absolute; inset: 0;
+      background: rgb(var(--color-primary));
+      transform: translateX(-100%);
+      transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .btn-primary:hover .gold-overlay { transform: translateX(0); }
+    .btn-primary .btn-content { position: relative; z-index: 10; display: flex; align-items: center; justify-content: center; gap: 8px; }
+
+    /* ══════════════════════════════════════ SECONDARY BUTTON */
+    .btn-secondary {
+      border: 1px solid rgb(var(--color-outline)); color: rgb(var(--color-on-background));
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+    .btn-secondary:hover { background: rgb(var(--color-outline)); color: rgb(var(--color-background)); }
+
+    /* ══════════════════════════════════════ STAT CARD HOVER */
+    .stat-card { transition: border-color 0.5s ease; }
+    .stat-card:hover { border-top-color: rgb(var(--color-primary)) !important; }
+    .stat-card:hover .stat-val { color: rgb(var(--color-primary)); }
+    .stat-val { transition: color 0.5s ease; }
+
+    /* ══════════════════════════════════════ SETTINGS CARD */
+    .settings-card { transition: box-shadow 0.5s ease; }
+    .settings-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.06); }
+
+    /* ══════════════════════════════════════ ENGINE RADIO OPTION */
+    .engine-option { transition: color 0.3s ease, border-color 0.3s ease; cursor: pointer; }
+    .engine-option:hover { color: rgb(var(--color-on-surface)); }
+    .engine-dot {
+      width: 14px; height: 14px; border: 1px solid rgb(var(--color-on-surface-variant));
+      background: transparent; flex-shrink: 0;
+      transition: all 0.3s ease;
+    }
+    input[name="engine"]:checked + .engine-dot,
+    input[name="engine"]:checked + .engine-option-inner .engine-dot {
+      border-color: rgb(var(--color-primary)) !important;
+      background: rgb(var(--color-primary)) !important;
+    }
+
+    /* Dark mode toggle styling */
+    #dark-mode-toggle {
+      border: 1px solid rgba(var(--color-outline-variant));
+      background: transparent;
+      color: rgb(var(--color-on-surface-variant));
+      transition: all 0.3s ease;
+    }
+    #dark-mode-toggle:hover {
+      border-color: rgb(var(--color-on-surface-variant));
+      color: rgb(var(--color-on-surface));
+    }
+  </style>
+  <!-- Apply dark mode before paint to avoid flash of wrong theme -->
+  <script>
+    (function(){
+      var stored = localStorage.getItem('darkMode');
+      var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (stored === 'enabled' || (stored === null && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    })();
+  </script>
+</head>
+
+<body class="bg-background text-on-background font-body min-h-screen overflow-x-hidden">
+
+<!-- ═══════════════════════════════════════════════════ PAPER NOISE OVERLAY -->
+<!-- Luxury signature: subtle paper grain at 3% opacity creates "expensive paper" tactility -->
+<div class="fixed inset-0 z-50 pointer-events-none" aria-hidden="true">
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-full h-full" style="opacity:0.035">
+    <filter id="paper-noise">
+      <feTurbulence type="fractalNoise" baseFrequency="0.82" numOctaves="4" stitchTiles="stitch"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <rect width="100%" height="100%" filter="url(#paper-noise)"/>
+  </svg>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ VERTICAL GRID LINES -->
+<!-- 4 architectural grid lines — editorial magazine structure -->
+<div class="hidden md:block fixed inset-0 pointer-events-none z-0" aria-hidden="true">
+  <div class="absolute top-0 bottom-0 w-px bg-outline/5" style="left:224px"></div>
+  <div class="absolute top-0 bottom-0 w-px bg-outline/5" style="left:calc(224px + (100vw - 224px) * 0.33)"></div>
+  <div class="absolute top-0 bottom-0 w-px bg-outline/5" style="left:calc(224px + (100vw - 224px) * 0.66)"></div>
+  <div class="absolute top-0 bottom-0 w-px bg-outline/5" style="right:32px"></div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════ TOAST CONTAINER -->
+<div id="toast-container" class="fixed top-6 right-6 z-[200] flex flex-col gap-3 pointer-events-none max-w-[320px]"></div>
+
+<!-- ═══════════════════════════════════════════════════════════ SIDEBAR -->
+<aside class="hidden md:flex flex-col w-56 h-screen bg-background border-r border-outline-variant fixed left-0 top-0 z-40">
+
+  <!-- Logo mark -->
+  <div class="px-8 py-8 flex-shrink-0">
+    <div class="font-headline text-xl font-light leading-none text-on-background">
+      Smart<em class="not-italic text-primary">·</em>OCR
+    </div>
+    <div class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant mt-1.5 font-medium">Invoice Intelligence</div>
+  </div>
+
+  <!-- Thin separator -->
+  <div class="mx-8 h-px bg-outline-variant"></div>
+
+  <!-- Navigation -->
+  <nav class="px-8 py-5 flex-1">
+    <div class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant/50 mb-3 font-semibold">Navigate</div>
+    <div class="nav-item active font-bold text-[10px]" data-page="dashboard" onclick="navigate('dashboard')">Dashboard</div>
+    <div class="nav-item font-bold text-[10px]" data-page="upload" onclick="navigate('upload')">Upload & Process</div>
+  </nav>
+
+  <!-- Engine status footer -->
+  <div class="px-8 pb-8">
+    <div class="h-px bg-outline-variant mb-5"></div>
+    <div class="flex items-center gap-2 mb-1.5">
+      <div class="w-1.5 h-1.5 bg-primary status-pulse"></div>
+      <span class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-bold">Engine Ready</span>
+    </div>
+    <div class="text-[12px] text-on-background font-medium" id="sidebar-engine-status">Hybrid mode active</div>
+  </div>
+</aside>
+
+<!-- ═══════════════════════════════════════════════════════════ MAIN AREA -->
+<div class="flex-1 md:ml-56 min-h-screen relative z-10">
+
+  <!-- ──────────────────────────────────────────── STICKY HEADER -->
+  <header class="flex justify-between items-center h-16 px-8 md:px-12 bg-background/90 backdrop-blur-sm border-b border-outline-variant sticky top-0 z-30">
+    <div class="flex items-center gap-4">
+      <!-- Mobile nav toggle -->
+      <button class="md:hidden text-on-surface-variant" onclick="toggleMobileMenu()">
+        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="square" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+      <h2 class="font-headline text-base font-medium text-on-background" id="page-title">Dashboard</h2>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <!-- Dark mode toggle -->
+      <button onclick="toggleDarkMode()" id="dark-mode-toggle"
+        class="w-9 h-9 flex items-center justify-center border border-outline-variant text-on-surface-variant hover:text-on-surface transition-all duration-300">
+        <!-- Moon Icon -->
+        <svg id="moon-icon" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="square" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+        <!-- Sun Icon (hidden by default) -->
+        <svg id="sun-icon" class="w-4 h-4 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="square" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 7a5 5 0 100 10 5 5 0 000-10z"/>
+        </svg>
+      </button>
+
+      <!-- Primary CTA: Gold slide animation -->
+      <button id="header-upload-btn" onclick="navigate('upload')"
+        class="btn-primary h-9 px-8 hidden md:block">
+        <span class="gold-overlay"></span>
+        <span class="btn-content text-[9px]">New Upload</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ──────────────────────────────────────────── PAGE CONTENT -->
+  <div class="px-8 md:px-12 py-12 max-w-[1400px]">
+
+    <!-- ════════════════════════════════════ PAGE: DASHBOARD -->
+    <section id="page-dashboard" class="page active">
+
+      <!-- Editorial headline block -->
+      <div class="mb-12 stagger-1">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="h-px w-10 bg-primary-container/30"></div>
+          <span class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant font-medium">Overview / Real-time</span>
+        </div>
+        <h3 class="font-headline text-4xl md:text-5xl font-normal leading-[1.05] text-on-background">
+          Invoice Intelligence
+        </h3>
+      </div>
+
+      <!-- ── Stat cards row (defined by top borders, not boxes) ── -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 border-t-2 border-outline mb-14 stagger-2">
+
+        <div class="stat-card border-t-2 border-transparent pt-7 pb-8 pr-8 lg:border-r lg:border-r border-outline-variant">
+          <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-5 font-medium">Invoices Processed</div>
+          <div class="font-headline text-5xl font-light leading-none text-on-background stat-val tabular-nums" id="stat-processed">0</div>
+          <div class="text-[10px] text-primary mt-3 font-medium tracking-wide" id="stat-processed-delta">—</div>
+        </div>
+
+        <div class="stat-card border-t-2 border-transparent pt-7 pb-8 pr-8 lg:pl-8 lg:border-r lg:border-r border-outline-variant">
+          <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-5 font-medium">Total Extracted</div>
+          <div class="font-headline text-5xl font-light leading-none text-on-background stat-val tabular-nums" id="stat-accuracy">—</div>
+          <div class="text-[10px] text-primary mt-3 font-medium tracking-wide" id="stat-accuracy-delta">—</div>
+        </div>
+
+        <div class="stat-card border-t-2 border-transparent pt-7 pb-8 pr-8 lg:pl-8 lg:border-r lg:border-r border-outline-variant">
+          <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-5 font-medium">Total Jobs</div>
+          <div class="font-headline text-5xl font-light leading-none text-on-background stat-val tabular-nums" id="stat-jobs">0</div>
+          <div class="text-[10px] text-on-surface-variant mt-3 font-medium tracking-wide" id="stat-jobs-delta">—</div>
+        </div>
+
+        <div class="stat-card border-t-2 border-transparent pt-7 pb-8 lg:pl-8">
+          <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-5 font-medium">Total Errors</div>
+          <div class="font-headline text-5xl font-light leading-none text-on-background stat-val tabular-nums" id="stat-errors">0</div>
+          <div class="text-[10px] text-on-surface-variant mt-3 font-medium tracking-wide" id="stat-errors-delta">—</div>
+        </div>
+      </div>
+
+      <!-- ── Recent Jobs table ── -->
+      <div class="stagger-3">
+        <div class="flex items-center justify-between mb-6">
+          <div class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant font-medium">Job History</div>
+        </div>
+
+        <div class="border-t border-outline-variant overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b border-outline-variant">
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Job ID</th>
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Mode</th>
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Files</th>
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Extracted</th>
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Status</th>
+                <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4">Action</th>
+              </tr>
+            </thead>
+            <tbody id="dashboard-jobs-body" class="divide-y divide-outline-variant">
+              <tr>
+                <td colspan="6" class="py-16 text-center">
+                  <div class="text-on-surface-variant text-sm font-light">Loading...</div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- ── Empty state ── -->
+      <div id="dashboard-empty" class="hidden stagger-4 text-center py-20 border-t border-outline-variant mt-12">
+        <div class="font-headline text-3xl font-light text-on-surface-variant/30 mb-4">No jobs yet</div>
+        <p class="text-on-surface-variant text-sm leading-relaxed mb-8 max-w-xs mx-auto">Upload your first invoice to begin extracting structured data.</p>
+        <button onclick="navigate('upload')"
+          class="btn-primary h-11 px-10 inline-block">
+          <span class="gold-overlay"></span>
+          <span class="btn-content text-[9px]">Upload Invoices</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ PAGE: UPLOAD & PROCESS -->
+    <section id="page-upload" class="page">
+
+      <!-- Editorial headline -->
+      <div class="mb-10">
+        <div class="flex items-center gap-4 mb-5">
+          <div class="h-px w-10 bg-primary-container/30"></div>
+          <span class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant font-medium">Document Processing</span>
+        </div>
+        <h3 class="font-headline text-4xl font-normal leading-tight text-on-background">
+          Upload &amp; Process
+        </h3>
+      </div>
+
+      <!-- 7 / 5 asymmetric grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+
+        <!-- LEFT: Drop zone + file list + log -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- Drop zone -->
+          <div id="drop-zone"
+            class="border border-dashed border-outline/25 p-16 lg:p-20 flex flex-col items-center justify-center text-center cursor-pointer group"
+            onclick="document.getElementById('file-input').click()"
+            ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)" ondrop="handleDrop(event)">
+
+            <div class="upload-sq w-14 h-14 bg-surface-variant flex items-center justify-center mb-8">
+              <svg class="w-5 h-5 text-on-surface-variant" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <path stroke-linecap="square" stroke-linejoin="miter" d="M12 16V4m0 0L8 8m4-4l4 4M20 16.5a4 4 0 01-4 4H8a4 4 0 01-4-4"/>
+              </svg>
+            </div>
+
+            <h4 class="font-headline text-2xl font-light text-on-background mb-2">Drop invoices here</h4>
+            <p class="text-on-surface-variant text-sm leading-relaxed max-w-[220px] mb-8">PDF, PNG, JPG · Multiple files · Max 200 MB total capacity</p>
+
+            <button class="btn-secondary h-9 px-8" onclick="event.stopPropagation(); document.getElementById('file-input').click()">
+              Browse Files
+            </button>
+            <input type="file" id="file-input" class="hidden" multiple accept=".pdf,.png,.jpg,.jpeg" onchange="handleFileSelect(event)"/>
+          </div>
+
+          <!-- File queue -->
+          <div id="file-queue-section" class="hidden">
+            <div class="flex items-center justify-between py-3 border-t border-b border-outline-variant mb-0">
+              <span class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant font-medium" id="queue-label">Queue · 0 files</span>
+              <button class="text-[9px] tracking-[0.25em] uppercase text-error hover:text-on-background transition-colors duration-500 font-medium" onclick="clearQueue()">Clear All</button>
+            </div>
+            <div id="file-list" class="divide-y divide-outline-variant max-h-56 overflow-y-auto"></div>
+          </div>
+
+          <!-- Live engine output panel (appears during processing) -->
+          <div id="processing-panel" class="hidden">
+            <div class="border border-outline-variant" style="background: rgb(var(--color-surface-container));">
+              <!-- Log header -->
+              <div class="flex items-center justify-between px-6 py-4 border-b" style="border-color: rgba(var(--color-outline-variant));">
+                <div class="flex items-center gap-2.5">
+                  <div class="w-1.5 h-1.5 status-pulse" style="background: rgb(var(--color-primary));"></div>
+                  <span class="text-[9px] tracking-[0.3em] uppercase font-medium" style="color: rgb(var(--color-on-surface-variant));">Live Engine Output</span>
+                </div>
+                <span class="text-[10px] font-mono" style="color: rgb(var(--color-on-surface-variant));" id="progress-label">0 / 0</span>
+              </div>
+              <!-- Progress bar -->
+              <div class="h-px overflow-hidden" style="background: rgba(var(--color-outline-variant));">
+                <div id="progress-bar" class="h-full" style="width:0%; background: rgb(var(--color-primary)); transition: width 0.5s ease;"></div>
+              </div>
+              <!-- Log console -->
+              <div id="log-console" class="h-52 overflow-y-auto font-mono text-[11px] px-6 py-4 space-y-0.5" style="background: rgb(var(--color-surface-container-lowest));">
+                <span class="log-line log-info">Waiting for pipeline...</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Engine config + CTA -->
+        <div class="lg:col-span-5">
+
+          <!-- Vertical decorative label (luxury signature) -->
+          <div class="hidden lg:flex items-start gap-8">
+            <div class="writing-vertical text-[8px] tracking-[0.4em] uppercase text-on-surface-variant/40 font-medium mt-2 flex-shrink-0">Config / Pipeline</div>
+            <div class="flex-1 space-y-0">
+
+              <!-- Engine selector — editorial text radio (not icon pills) -->
+              <div class="mb-8">
+                <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-4 font-medium pb-3 border-b border-outline-variant">Extraction Engine</div>
+
+                <label class="block py-4 border-b border-outline-variant cursor-pointer group/eng">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <div class="text-sm font-medium text-on-background mb-0.5">Hybrid</div>
+                      <div class="text-[11px] text-on-surface-variant leading-relaxed">Regex for text PDFs, Gemini AI for scanned</div>
+                    </div>
+                    <input type="radio" name="engine" value="hybrid" class="engine-radio sr-only" checked/>
+                    <div class="engine-dot mt-0.5"></div>
+                  </div>
+                </label>
+
+                <label class="block py-4 border-b border-outline-variant cursor-pointer group/eng">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <div class="text-sm font-medium text-on-background mb-0.5">Local Only</div>
+                      <div class="text-[11px] text-on-surface-variant leading-relaxed">100% offline — regex + Tesseract OCR</div>
+                    </div>
+                    <input type="radio" name="engine" value="local" class="engine-radio sr-only"/>
+                    <div class="engine-dot mt-0.5"></div>
+                  </div>
+                </label>
+
+                <label class="block py-4 cursor-pointer group/eng">
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <div class="text-sm font-medium text-on-background mb-0.5">Gemini AI Only</div>
+                      <div class="text-[11px] text-on-surface-variant leading-relaxed">Maximum accuracy · requires API key</div>
+                    </div>
+                    <input type="radio" name="engine" value="llm" class="engine-radio sr-only"/>
+                    <div class="engine-dot mt-0.5"></div>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Parallel toggle -->
+              <div class="mb-8">
+                <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-4 font-medium pb-3 border-b border-outline-variant">Processing</div>
+                <div class="flex items-start justify-between gap-4 py-2">
+                  <div>
+                    <div class="text-sm font-medium text-on-background mb-0.5">Parallel Workers</div>
+                    <div class="text-[11px] text-on-surface-variant leading-relaxed">Multi-thread for large batches</div>
+                  </div>
+                  <label class="luxury-toggle mt-0.5" id="parallel-toggle-label">
+                    <input type="checkbox" id="parallel-toggle" class="sr-only" onchange="toggleParallel(this)"/>
+                    <div class="toggle-track"><div class="toggle-thumb"></div></div>
+                  </label>
+                </div>
+                <div id="workers-section" class="hidden pt-4 pb-2">
+                  <div class="flex justify-between text-[11px] mb-3">
+                    <span class="text-on-surface-variant">Threads</span>
+                    <span class="font-mono text-on-background font-medium" id="workers-label">4</span>
+                  </div>
+                  <input type="range" id="workers-slider" min="1" max="16" value="4" oninput="document.getElementById('workers-label').textContent=this.value"/>
+                </div>
+              </div>
+
+              <!-- CTA: Gold slide primary button -->
+              <button id="start-btn" onclick="startProcessing()"
+                class="btn-primary w-full h-14 mt-4 mb-5" disabled>
+                <span class="gold-overlay"></span>
+                <span class="btn-content gap-3">
+                  <svg class="w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="square" stroke-linejoin="miter" d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.347a1.125 1.125 0 010 1.972l-11.54 6.347a1.125 1.125 0 01-1.667-.986V5.653z"/>
+                  </svg>
+                  Start Extraction
+                </span>
+              </button>
+
+              <!-- Result ready shortcut -->
+              <div id="result-shortcut" class="hidden border-t-2 border-primary pt-5">
+                <div class="flex items-center justify-between">
+                  <div>
+                    <div class="text-[9px] tracking-[0.25em] uppercase text-primary font-medium mb-1">Complete</div>
+                    <div class="text-sm font-light text-on-background" id="result-summary">— invoices extracted</div>
+                  </div>
+                  <button id="view-results-btn" onclick="navigate('results')"
+                    class="btn-secondary h-9 px-6">View Results</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Mobile: no vertical label wrapper -->
+          <div class="flex lg:hidden flex-col space-y-6">
+            <!-- same engine selector without the vertical label -->
+            <div>
+              <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-4 font-medium pb-3 border-b border-outline-variant">Extraction Engine</div>
+              <div class="space-y-0">
+                <label class="block py-3 border-b border-outline-variant cursor-pointer">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-sm font-medium">Hybrid</div>
+                    <input type="radio" name="engine" value="hybrid" class="sr-only" checked/><div class="engine-dot"></div>
+                  </div>
+                </label>
+                <label class="block py-3 border-b border-outline-variant cursor-pointer">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-sm font-medium">Local Only</div>
+                    <input type="radio" name="engine" value="local" class="sr-only"/><div class="engine-dot"></div>
+                  </div>
+                </label>
+                <label class="block py-3 cursor-pointer">
+                  <div class="flex items-center justify-between gap-4">
+                    <div class="text-sm font-medium">Gemini AI Only</div>
+                    <input type="radio" name="engine" value="llm" class="sr-only"/><div class="engine-dot"></div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <button id="start-btn-mobile" onclick="startProcessing()"
+              class="btn-primary w-full h-14" disabled>
+              <span class="gold-overlay"></span>
+              <span class="btn-content">Start Extraction</span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════════════ PAGE: RESULTS -->
+    <section id="page-results" class="page">
+
+      <!-- Header row -->
+      <div class="flex items-start justify-between mb-10">
+        <div>
+          <div class="flex items-center gap-4 mb-5">
+            <button onclick="navigate('dashboard')" class="flex items-center gap-1 text-[9px] tracking-[0.25em] uppercase text-primary hover:text-on-background transition-colors duration-500 font-medium mr-2">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="square" d="M15 19l-7-7 7-7"/></svg>
+              Back
+            </button>
+            <div class="h-px w-10 bg-primary-container/30"></div>
+            <span class="text-[9px] tracking-[0.35em] uppercase text-on-surface-variant font-medium">Extraction Output</span>
+          </div>
+          <h3 class="font-headline text-4xl font-light text-on-background">
+            <em class="italic text-on-surface-variant">Extracted</em> Results
+          </h3>
+          <p class="text-on-surface-variant text-sm mt-2 font-light" id="results-subtitle">Select a job from history to view its results.</p>
+        </div>
+        <button id="download-btn" onclick="downloadExcel()"
+          class="btn-primary h-10 px-8 hidden mt-2">
+          <span class="gold-overlay"></span>
+          <span class="btn-content gap-2">
+            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="square" d="M12 16V4m0 12l-4-4m4 4l4-4M4 20h16"/></svg>
+            Download Excel
+          </span>
+        </button>
+      </div>
+
+      <!-- Tabs — minimal underline style -->
+      <div class="flex items-end gap-8 border-b border-outline-variant mb-6 relative">
+        <button id="tab-summary-btn" onclick="switchResultsTab('summary')"
+          class="text-[9px] tracking-[0.25em] uppercase font-medium text-on-background pb-4 transition-colors duration-500">
+          Invoice Summary
+        </button>
+        <button id="tab-items-btn" onclick="switchResultsTab('items')"
+          class="text-[9px] tracking-[0.25em] uppercase font-medium text-on-surface-variant hover:text-on-background pb-4 transition-colors duration-500">
+          Line Items
+        </button>
+        <div id="tab-indicator" class="absolute bottom-0 left-0 w-32" style="height:1px"></div>
+      </div>
+
+      <!-- Search + filter -->
+      <div class="flex flex-wrap gap-4 items-center mb-6">
+        <div class="relative">
+          <svg class="absolute left-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-on-surface-variant" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path stroke-linecap="square" d="M21 21l-4.35-4.35"/></svg>
+          <input id="results-search" type="text" placeholder="Search invoices…"
+            class="pl-6 pr-4 py-2 bg-transparent border-b border-outline/20 text-sm font-light text-on-background focus:outline-none focus:border-primary transition-colors duration-500 w-52"
+            oninput="filterResults()"/>
+        </div>
+        <select id="results-status-filter"
+          class="bg-transparent border-b border-outline/20 py-2 text-[9px] tracking-[0.2em] uppercase font-medium text-on-surface-variant cursor-pointer focus:outline-none focus:border-primary transition-colors duration-500"
+          onchange="filterResults()">
+          <option value="">All</option>
+          <option value="ok">Extracted</option>
+          <option value="low">Low Confidence</option>
+        </select>
+        <div class="ml-auto text-[9px] tracking-[0.2em] uppercase text-on-surface-variant font-medium" id="results-count">0 results</div>
+      </div>
+
+      <!-- Summary table -->
+      <div id="content-summary" class="border-t border-outline-variant overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-outline-variant">
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Vendor</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Invoice #</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Date</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Grand Total</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Confidence</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-10">Status</th>
+              <th class="py-4"></th>
+            </tr>
+          </thead>
+          <tbody id="summary-table-body" class="divide-y divide-outline-variant">
+            <tr>
+              <td colspan="7" class="py-16 text-center">
+                <div class="font-headline text-2xl font-light italic text-on-surface-variant/30 mb-3">No results loaded</div>
+                <div class="text-on-surface-variant text-sm">Go to the <button onclick="navigate('dashboard')" class="text-primary hover:text-on-background transition-colors duration-500">Dashboard</button> and click a job to view its results.</div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Line items table -->
+      <div id="content-items" class="hidden border-t border-outline-variant overflow-x-auto">
+        <table class="w-full text-left">
+          <thead>
+            <tr class="border-b border-outline-variant">
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Source</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Invoice #</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Description</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Qty</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Unit Price</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4 pr-8">Tax Rate</th>
+              <th class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-medium py-4">Line Total</th>
+            </tr>
+          </thead>
+          <tbody id="items-table-body" class="divide-y divide-outline-variant">
+            <tr>
+              <td colspan="7" class="py-14 text-center text-on-surface-variant font-light">No line items to show.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ── Side drawer (detail view) ── -->
+      <div id="side-drawer" class="fixed inset-y-0 right-0 w-[400px] z-50 translate-x-full overflow-y-auto overflow-x-hidden" style="background: rgb(var(--color-background));">
+
+        <!-- Drawer header -->
+        <div class="sticky top-0 backdrop-blur-sm border-b border-outline-variant px-8 py-6 z-10" style="background: rgba(var(--color-background), 0.95);">
+          <div class="flex items-start justify-between">
+            <div>
+              <div class="text-[9px] tracking-[0.3em] uppercase text-on-surface-variant mb-2 font-medium">Invoice Detail</div>
+              <h4 class="font-headline text-xl font-light text-on-background leading-tight" id="drawer-title">—</h4>
+              <p class="text-[11px] text-on-surface-variant font-mono mt-1" id="drawer-subtitle"></p>
+            </div>
+            <button onclick="closeDrawer()"
+              class="w-8 h-8 border border-outline/15 flex items-center justify-center text-on-surface-variant hover:text-on-background hover:border-outline/40 transition-all duration-300 mt-1">
+              <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="square" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="p-8" id="drawer-content"><!-- JS-populated --></div>
+      </div>
+
+      <!-- Drawer backdrop -->
+      <div id="drawer-overlay" class="fixed inset-0 bg-primary-container/20 backdrop-blur-[2px] z-40 hidden" onclick="closeDrawer()"></div>
+    </section>
+
+
+
+  </div><!-- /content -->
+</div><!-- /main -->
+
+<!-- ═══════════════════════════════════════════════════ SCRIPTS -->
+<script src="/static/app.js"></script>
+</body>
+</html>

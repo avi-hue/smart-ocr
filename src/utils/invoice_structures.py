@@ -34,7 +34,7 @@ HEADER_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["INV-2024-001", "2024/INV/00123", "INV#5678"],
         regex_hints=[
-            r"(?i)invoice\s*(?:#|no\.?|number)[:\s]*([A-Z0-9\-/]+)",
+            r"(?i)\b(?:invoice(?!\s+to)|folio|receipt(?!\s+from)|confirmation|bill(?!\s+to))\b\s*(?:#|no\.?|number)?\s*[:]?\s*([A-Z0-9\-/\.]+(?:[ \t]+[A-Z0-9\-/\.]+){0,2})",
             r"(?i)INV[-\s]?(\d+)",
         ],
     ),
@@ -44,8 +44,10 @@ HEADER_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["01/06/2024", "June 1, 2024", "2024-06-01"],
         regex_hints=[
-            r"(?i)(?:invoice\s+)?date[:\s]*(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})",
+            r"(?i)(?:invoice\s+)?date\s*(?:of\s+issue)?[:\s]*(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})",
+            r"(?i)(?:billing\s+)?date\s*(?:of\s+issue)?[:\s]*([A-Za-z]+ \d{1,2},? \d{4})",
             r"(?i)date[:\s]*([A-Za-z]+ \d{1,2},? \d{4})",
+            r"(?i)date[:\s]*(\d{1,2}[\/\-\.]\d{1,2}[\/\-\.]\d{2,4})",
         ],
     ),
     InvoiceField(
@@ -65,6 +67,24 @@ HEADER_FIELDS: List[InvoiceField] = [
         example_values=["PO-2024-789", "4500012345"],
         regex_hints=[
             r"(?i)\b(?:purchase\s+order|p\.?o\.?\s*(?:number|no\.?))\s*[:#\s]\s*([A-Z0-9][A-Z0-9\-/]{1,20})",
+        ],
+    ),
+    InvoiceField(
+        name="order_id",
+        description="Order ID or Order Number",
+        required=False,
+        example_values=["ORD-123", "Order # 123"],
+        regex_hints=[
+            r"(?i)\b(?:order\s+id|order\s+no\.?|order\s*#|order|id)\b\s*[:#\-]?\s*([A-Z0-9][A-Z0-9\-/]+)",
+        ],
+    ),
+    InvoiceField(
+        name="ship_mode",
+        description="Shipping method or mode",
+        required=False,
+        example_values=["FedEx", "Air", "Ground"],
+        regex_hints=[
+            r"(?i)\b(?:ship\s+mode|shipping\s+method|ship\s+via|via)\s*[:]?\s*([A-Za-z0-9\-\s]+?)(?:\n|$|\s{2,})",
         ],
     ),
 ]
@@ -119,7 +139,7 @@ BUYER_FIELDS: List[InvoiceField] = [
         example_values=["XYZ Enterprises", "John Doe"],
         regex_hints=[
             r"(?i)bill\s+to:[^\n]*\n.*?\s{3,}([a-zA-Z0-9_\s\.,\-]+?)(?:\s{3,}|\n|$)",
-            r"(?i)(?:sold\s+to|customer|buyer)[:\s]+([^ \n]+(?: [^ \n]+)*?)(?:\s{2,}|\n)",
+            r"(?i)(?:sold\s+to|customer|buyer|guest|guest\s+name)[:\s]+([^ \n]+(?: [^ \n]+){0,4})",
         ],
     ),
     InvoiceField(
@@ -141,7 +161,9 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹10,000.00", "$5,000.00"],
         regex_hints=[
-            r"(?i)sub[\s\-]?total[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)sub[\s\-]?total[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
+            r"(?i)net\s*worth[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
+            r"(?i)taxable\s*value[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
         ],
     ),
     InvoiceField(
@@ -150,7 +172,7 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹1,800.00 (18% GST)"],
         regex_hints=[
-            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)(?:gst|vat|tax|igst|cgst|sgst)[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
         ],
     ),
     InvoiceField(
@@ -159,8 +181,10 @@ FINANCIAL_FIELDS: List[InvoiceField] = [
         required=True,
         example_values=["₹11,800.00", "$5,500.00"],
         regex_hints=[
-            r"(?i)(?:grand\s+)?\btotal(?:\s+amount)?(?:\s+due)?[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
-            r"(?i)amount\s+payable[^:\n]*?[: \t]*[^\d\n]*([\d,]+\.\d{2})",
+            r"(?i)(?:grand\s+)?\btotal(?:\s+amount)?(?:\s+due)?[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
+            r"(?i)amount\s+payable[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
+            r"(?i)gross\s*worth[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
+            r"(?i)(?:balance|total\s+charges|amount\s+due|net\s+due)[^:\n]*?[: \t]*[^\d\n]*(\d+[\s\d,\.]*[\.,]\d{2})",
         ],
     ),
     InvoiceField(

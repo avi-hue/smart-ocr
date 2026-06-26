@@ -113,13 +113,38 @@ def normalize_date(raw: Optional[str], reference_date: Optional[str] = None) -> 
 
 def normalize_amount(raw: Optional[str]) -> Optional[float]:
     """
-    Parse a currency string and return a float.
-    e.g. "₹ 1,18,000.00"  →  118000.0
+    Parse a currency string and return a float, handling European comma decimal separators
+    and spaces/commas as thousand separators.
     """
     if not raw:
         return None
-    # Strip currency symbols and spaces
-    cleaned = re.sub(r"[₹$€£\s,]", "", raw)
+    # Strip currency symbols and leading/trailing whitespace
+    cleaned = re.sub(r"[₹$€£\u20AC\u00A3\u20B9]|Rs\.?|INR", "", raw, flags=re.IGNORECASE).strip()
+    
+    # Handle dot/comma combination or individual dots/commas
+    if "." in cleaned and "," in cleaned:
+        dot_pos = cleaned.rfind(".")
+        comma_pos = cleaned.rfind(",")
+        if dot_pos > comma_pos:
+            cleaned = cleaned.replace(",", "")
+        else:
+            cleaned = cleaned.replace(".", "").replace(",", ".")
+    elif "," in cleaned:
+        if re.search(r",\d{2}$", cleaned):
+            cleaned = re.sub(r"\s+", "", cleaned).replace(",", ".")
+        else:
+            cleaned = cleaned.replace(",", "")
+    elif "." in cleaned:
+        if re.search(r"\.\d{2}$", cleaned):
+            cleaned = re.sub(r"\s+", "", cleaned)
+        else:
+            if re.search(r"\.\d{3}$", cleaned):
+                cleaned = cleaned.replace(".", "")
+            else:
+                cleaned = re.sub(r"\s+", "", cleaned)
+    else:
+        cleaned = re.sub(r"\s+", "", cleaned)
+
     # Fix common OCR substitution: O → 0 in numeric context
     cleaned = re.sub(r"(?<=[0-9])O(?=[0-9])", "0", cleaned)
     try:
@@ -151,6 +176,14 @@ def normalize_invoice(invoice: ExtractedInvoice) -> ExtractedInvoice:
     """
     log.info("Normalizing invoice: {}", invoice.source_file.name)
 
+    # Clean currency
+    clean_curr = clean_string(invoice.currency)
+    if clean_curr:
+        if clean_curr.lower()[:3] in {"jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"}:
+            clean_curr = ""
+        elif len(clean_curr) > 5:
+            clean_curr = ""
+
     normalized = replace(
         invoice,
         invoice_number = clean_string(invoice.invoice_number),
@@ -167,7 +200,7 @@ def normalize_invoice(invoice: ExtractedInvoice) -> ExtractedInvoice:
         subtotal       = _format_amount(invoice.subtotal),
         tax_amount     = _format_amount(invoice.tax_amount),
         total_amount   = _format_amount(invoice.total_amount),
-        currency       = clean_string(invoice.currency),
+        currency       = clean_curr,
     )
 
     log.info("Normalization complete")

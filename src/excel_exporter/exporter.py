@@ -40,10 +40,13 @@ WRAP_ALIGN    = Alignment(wrap_text=True, vertical="top")
 # Column order for Summary sheet
 SUMMARY_COLUMNS = [
     ("source_file",    "Source File"),
+    ("ocr_confidence", "OCR Confidence"),
     ("invoice_number", "Invoice #"),
     ("invoice_date",   "Invoice Date"),
     ("due_date",       "Due Date"),
     ("purchase_order", "PO Number"),
+    ("order_id",       "Order ID"),
+    ("ship_mode",      "Ship Mode"),
     ("vendor_name",    "Vendor Name"),
     ("vendor_address", "Vendor Address"),
     ("vendor_gstin",   "Vendor GSTIN"),
@@ -99,6 +102,17 @@ def _write_data_row(ws, row_idx: int, data: dict, columns: list[tuple[str, str]]
         cell.fill      = fill
         cell.border    = CELL_BORDER
         cell.alignment = WRAP_ALIGN
+        
+        # Flag low OCR confidence with red fill
+        if key == "ocr_confidence" and isinstance(value, str) and value.endswith("%"):
+            try:
+                conf_val = float(value.strip("%"))
+                if conf_val < 80.0:
+                    # Light red fill for low confidence
+                    cell.fill = PatternFill("solid", fgColor="FFC7CE")
+                    cell.font = Font(color="9C0006")
+            except ValueError:
+                pass
 
 
 def _auto_column_width(ws) -> None:
@@ -145,10 +159,42 @@ def _build_dynamic_columns(base_columns: List[tuple], data_list: List[dict]) -> 
     for col_key, col_label in full_columns:
         # Check if at least one row has a truthy value for this column
         is_empty = all(not str(d.get(col_key) or "").strip() for d in data_list)
-        if not is_empty:
+        if not is_empty or col_key in ("invoice_number", "source_file"):
             active_columns.append((col_key, col_label))
 
     return active_columns
+
+
+def _build_line_item_columns(data_list: List[dict]) -> List[tuple[str, str]]:
+    """
+    Dynamically discover all columns in data_list and order them in the exact
+    raw insertion order of key occurrences.
+    """
+    if not data_list:
+        return [("source_file", "Source File"), ("invoice_number", "Invoice #")]
+        
+    cols = [("source_file", "Source File"), ("invoice_number", "Invoice #")]
+    
+    # Collect unique keys while preserving order
+    seen_keys = {"source_file", "invoice_number"}
+    ordered_keys = []
+    for d in data_list:
+        for k in d.keys():
+            if k not in seen_keys:
+                seen_keys.add(k)
+                ordered_keys.append(k)
+                
+    for k in ordered_keys:
+        cols.append((k, str(k).strip()))
+        
+    # Prune empty columns
+    active_cols = []
+    for col_key, col_label in cols:
+        is_empty = all(not str(d.get(col_key) or "").strip() for d in data_list)
+        if not is_empty:
+            active_cols.append((col_key, col_label))
+            
+    return active_cols
 
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -203,32 +249,36 @@ def export_to_excel(
     ws_items = wb.create_sheet("Line Items")
     ws_items.freeze_panes = "A2"
 
-    # 1. Collect all line item data
+    # 1. Collect all line item data dynamically preserving raw columns
     line_item_data_list = []
     for invoice in invoices:
         for item in invoice.line_items:
             data = {
                 "source_file"   : invoice.source_file.name,
                 "invoice_number": invoice.invoice_number or "",
-                "sr_no"         : item.sr_no,
-                "description"   : item.description,
-                "hsn_sac_code"  : item.hsn_sac_code,
-                "quantity"      : item.quantity,
-                "unit_price"    : item.unit_price,
-                "discount"      : item.discount,
-                "tax_rate"      : item.tax_rate,
-                "tax_amount"    : item.tax_amount,
-                "cgst_rate"     : item.cgst_rate,
-                "cgst_amount"   : item.cgst_amount,
-                "sgst_rate"     : item.sgst_rate,
-                "sgst_amount"   : item.sgst_amount,
-                "line_total"    : item.line_total,
-                **(item.extra_fields or {}),
             }
+            if item.extra_fields:
+                data.update(item.extra_fields)
+            else:
+                data.update({
+                    "Sr. No."    : item.sr_no,
+                    "Description": item.description,
+                    "HSN/SAC"    : item.hsn_sac_code,
+                    "Qty"        : item.quantity,
+                    "Unit Price" : item.unit_price,
+                    "Disc. %"    : item.discount,
+                    "Tax Rate"   : item.tax_rate,
+                    "Tax Amount" : item.tax_amount,
+                    "CGST %"     : item.cgst_rate,
+                    "CGST Amt"   : item.cgst_amount,
+                    "SGST %"     : item.sgst_rate,
+                    "SGST Amt"   : item.sgst_amount,
+                    "Line Total" : item.line_total,
+                })
             line_item_data_list.append(data)
 
-    # 2. Discover extra keys and drop empty columns
-    dynamic_item_cols = _build_dynamic_columns(LINE_ITEM_COLUMNS, line_item_data_list)
+    # 2. Discover raw columns order and drop empty columns
+    dynamic_item_cols = _build_line_item_columns(line_item_data_list)
 
     _write_header(ws_items, dynamic_item_cols)
 
