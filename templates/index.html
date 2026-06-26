@@ -494,7 +494,7 @@
       <div class="w-1.5 h-1.5 bg-primary status-pulse"></div>
       <span class="text-[9px] tracking-[0.25em] uppercase text-on-surface-variant font-bold">Engine Ready</span>
     </div>
-    <div class="text-[12px] text-on-background font-medium" id="sidebar-engine-status">Hybrid mode active</div>
+    <div class="text-[12px] text-on-background font-medium" id="sidebar-engine-status">Local mode active</div>
   </div>
 </aside>
 
@@ -710,21 +710,10 @@
                 <label class="block py-4 border-b border-outline-variant cursor-pointer group/eng">
                   <div class="flex items-start justify-between gap-4">
                     <div>
-                      <div class="text-sm font-medium text-on-background mb-0.5">Hybrid</div>
-                      <div class="text-[11px] text-on-surface-variant leading-relaxed">Regex for text PDFs, Gemini AI for scanned</div>
-                    </div>
-                    <input type="radio" name="engine" value="hybrid" class="engine-radio sr-only" checked/>
-                    <div class="engine-dot mt-0.5"></div>
-                  </div>
-                </label>
-
-                <label class="block py-4 border-b border-outline-variant cursor-pointer group/eng">
-                  <div class="flex items-start justify-between gap-4">
-                    <div>
                       <div class="text-sm font-medium text-on-background mb-0.5">Local Only</div>
                       <div class="text-[11px] text-on-surface-variant leading-relaxed">100% offline — regex + Tesseract OCR</div>
                     </div>
-                    <input type="radio" name="engine" value="local" class="engine-radio sr-only"/>
+                    <input type="radio" name="engine" value="local" class="engine-radio sr-only" checked/>
                     <div class="engine-dot mt-0.5"></div>
                   </div>
                 </label>
@@ -798,14 +787,8 @@
               <div class="space-y-0">
                 <label class="block py-3 border-b border-outline-variant cursor-pointer">
                   <div class="flex items-center justify-between gap-4">
-                    <div class="text-sm font-medium">Hybrid</div>
-                    <input type="radio" name="engine" value="hybrid" class="sr-only" checked/><div class="engine-dot"></div>
-                  </div>
-                </label>
-                <label class="block py-3 border-b border-outline-variant cursor-pointer">
-                  <div class="flex items-center justify-between gap-4">
                     <div class="text-sm font-medium">Local Only</div>
-                    <input type="radio" name="engine" value="local" class="sr-only"/><div class="engine-dot"></div>
+                    <input type="radio" name="engine" value="local" class="sr-only" checked/><div class="engine-dot"></div>
                   </div>
                 </label>
                 <label class="block py-3 cursor-pointer">

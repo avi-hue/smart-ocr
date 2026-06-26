@@ -62,7 +62,7 @@ _jobs_lock = threading.Lock()
 
 # ── Default settings ──────────────────────────────────────────────────────────
 DEFAULT_SETTINGS = {
-    "extractor_mode": "hybrid",
+    "extractor_mode": "local",
     "parallel": False,
     "workers": 4,
     "gemini_api_key": os.getenv("GEMINI_API_KEY", ""),
@@ -145,7 +145,7 @@ def _run_job(job_id: str, file_paths: list[Path], settings: dict):
 
     job = _jobs[job_id]
     log_q: queue.Queue = job["log_q"]
-    extractor_mode = settings.get("extractor_mode", "hybrid")
+    extractor_mode = settings.get("extractor_mode", "local")
     total = len(file_paths)
 
     def emit(msg: str, level: str = "info"):
@@ -420,7 +420,7 @@ def api_history():
                     "total": data.get("total", 0),
                     "extracted": data.get("extracted", 0),
                     "errors": data.get("errors", 0),
-                    "extractor_mode": data.get("extractor_mode", "hybrid"),
+                    "extractor_mode": data.get("extractor_mode", "local"),
                     "completed_at": data.get("completed_at", ""),
                     "files": data.get("results", [{}])[0].get("source_file", "") if data.get("results") else "",
                     "excel_available": (job_dir / "invoices.xlsx").exists(),

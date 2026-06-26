@@ -121,7 +121,7 @@ async function loadDashboard() {
       <tr onclick="loadResultsForJob('${j.job_id}')" class="cursor-pointer group">
         <td class="px-6 py-4 font-mono text-xs text-primary">#${j.job_id}</td>
         <td class="px-6 py-4">
-          <span class="badge ${j.extractor_mode === 'hybrid' ? 'badge-info' : j.extractor_mode === 'llm' ? 'badge-warn' : 'badge-success'}">${j.extractor_mode}</span>
+          <span class="badge ${j.extractor_mode === 'llm' ? 'badge-warn' : 'badge-success'}">${j.extractor_mode}</span>
         </td>
         <td class="px-6 py-4 text-sm">${j.total}</td>
         <td class="px-6 py-4 text-sm text-tertiary font-bold">${j.extracted}</td>
@@ -242,7 +242,7 @@ function toggleParallel(cb) {
 async function startProcessing() {
   if (!uploadedFiles.length) return;
 
-  const engine   = document.querySelector('input[name="engine"]:checked')?.value || 'hybrid';
+  const engine   = document.querySelector('input[name="engine"]:checked')?.value || 'local';
   const parallel = document.getElementById('parallel-toggle').checked;
   const workers  = document.getElementById('workers-slider').value;
 
@@ -591,7 +591,7 @@ function downloadExcelJob(jobId) {
 
 // ══════════════════════════════════════════════════════════ SETTINGS
 function updateSidebarEngineStatus(mode) {
-  const text = mode === 'llm' ? 'gemini ai only' : mode === 'local' ? 'local only' : 'hybrid';
+  const text = mode === 'llm' ? 'gemini ai only' : 'local only';
   const el = document.getElementById('sidebar-engine-status');
   if (el) el.textContent = `${text} mode active`;
 }
@@ -600,7 +600,7 @@ async function loadSettings() {
   try {
     const res  = await fetch('/api/settings');
     const data = await res.json();
-    const mode = data.extractor_mode || 'hybrid';
+    const mode = data.extractor_mode || 'local';
     updateSidebarEngineStatus(mode);
     const radio = document.querySelector(`input[name="engine"][value="${mode}"]`);
     if (radio) radio.checked = true;

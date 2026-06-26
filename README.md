@@ -142,7 +142,7 @@ Smart-OCR has **three entry points** — choose the one that fits your workflow:
 
 The primary command-line interface. Process one file, a folder, or a glob pattern and export results to Excel.
 
-#### Process a single PDF or image (default Hybrid mode)
+#### Process a single PDF or image
 
 ```bash
 python main.py --input data/samples/my_invoice.pdf
@@ -196,7 +196,7 @@ python main.py --input data/samples/ --limit 10
 |------|-------|-------------|
 | `--input` | `-i` | One or more file paths, folder, or glob pattern *(required)* |
 | `--output` | `-o` | Custom output `.xlsx` path *(optional)* |
-| `--extractor` | `-e` | Extraction mode: `local`, `llm`, or `hybrid` (default: `hybrid`) |
+| `--extractor` | `-e` | Extraction mode: `local` or `llm` (default: `local`) |
 | `--parallel` | | Enable concurrent thread-pool processing |
 | `--workers` | `-w` | Number of parallel worker threads (default: 4) |
 | `--limit` | `-l` | Limit the number of files processed (e.g. `--limit 100`) |
@@ -207,7 +207,7 @@ python main.py --input data/samples/ --limit 10
 |------|-------------|--------------|-------|
 | `local` | Regex + spatial key-value parser (`field_extractor.py`). Fully offline. | No | Fast |
 | `llm` | Always routes to Gemini for semantic extraction. | **Yes** | Slow |
-| `hybrid` | Uses LLM for extraction, automatically falls back to local parser if the API is unavailable or returns empty results. | Optional | Medium |
+
 
 ---
 
@@ -229,7 +229,7 @@ Then open **http://localhost:5000** in your browser.
 | Feature | Details |
 |---|---|
 | **File Uploader** | Drag-and-drop PDF / PNG / JPG files (multi-select, up to 200 MB total capacity) |
-| **Extraction Mode** | Switch between `hybrid`, `local`, `llm` from the sidebar |
+| **Extraction Mode** | Switch between `local` and `llm` from the sidebar |
 | **Parallel Workers** | Enable multi-threading via sidebar toggle + slider |
 | **Live Log Console** | Color-coded execution log updates during processing |
 | **Results Preview** | Tabbed table view — Invoice Summary & Line Items |
@@ -362,7 +362,7 @@ The generated `.xlsx` contains two sheets:
 
 ### Week 4 — Accuracy Improvement, Multi-page Support & Finalization ✅ Complete
 - [x] Test on multiple invoice formats and layouts (using Downloads/dataset)
-- [x] Implement dynamic hybrid fallback (routes native PDFs to LLM if local extraction fails)
+
 - [x] Support multi-page documents without text truncation (expanded character limit)
 - [x] Display confidence score as `100.0% (Native)` for native text PDFs (resolves OCR confusion)
 - [x] Specify maximum upload capacity (Max 200 MB total capacity) in the UI

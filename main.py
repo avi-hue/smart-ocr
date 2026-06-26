@@ -81,7 +81,7 @@ def collect_files(input_paths: list[Path]) -> list[Path]:
     # Remove duplicates if any (while preserving order)
     return list(dict.fromkeys(files))
 
-def process_file(file_path: Path, extractor_mode: str = "hybrid") -> ExtractedInvoice | None:
+def process_file(file_path: Path, extractor_mode: str = "local") -> ExtractedInvoice | None:
     """
     Run the full extraction pipeline on a single file.
 
@@ -164,8 +164,6 @@ def process_file(file_path: Path, extractor_mode: str = "hybrid") -> ExtractedIn
     if api_key:
         if extractor_mode == "llm":
             use_llm = True
-        elif extractor_mode == "hybrid" and is_scanned:
-            use_llm = True
 
     if use_llm:
         log.info("Routing to LLM Semantic Extractor.")
@@ -191,10 +189,7 @@ def process_file(file_path: Path, extractor_mode: str = "hybrid") -> ExtractedIn
         has_vendor = bool(invoice.vendor_name and invoice.vendor_name.strip())
         has_total = bool(invoice.total_amount and invoice.total_amount.strip())
         has_line_items = len(invoice.line_items) > 0
-        
-        if extractor_mode == "hybrid" and (not has_line_items or not has_vendor or not has_total) and api_key:
-            log.warning("Local extraction quality is low (missing vendor, total, or line items). Falling back to LLM Semantic Extractor...")
-            invoice = extract_invoice_via_llm(text=full_text, source_file=file_path)
+
         
     # Attach OCR confidence
     invoice.overall_ocr_confidence = avg_conf
@@ -205,7 +200,7 @@ def process_file(file_path: Path, extractor_mode: str = "hybrid") -> ExtractedIn
     return invoice
 
 
-def run(input_paths: list[Path], output_path: Path | None, extractor_mode: str = "hybrid", parallel: bool = False, workers: int = 4, limit: int | None = None) -> None:
+def run(input_paths: list[Path], output_path: Path | None, extractor_mode: str = "local", parallel: bool = False, workers: int = 4, limit: int | None = None) -> None:
     """Main pipeline runner."""
     files = collect_files(input_paths)
     log.info("Found {} file(s) to process", len(files))
@@ -292,12 +287,11 @@ def parse_args():
     )
     parser.add_argument(
         "--extractor", "-e",
-        choices=["local", "llm", "hybrid"],
-        default="hybrid",
+        choices=["local", "llm"],
+        default="local",
         help="Extraction mode to use:\n"
              "  local  - 100% local extraction (regex & OCR table parsing, fast & offline)\n"
-             "  llm    - Always use Gemini LLM for extraction (slow, api dependent)\n"
-             "  hybrid - Use local for text PDFs, LLM for scanned PDFs/images (default)",
+             "  llm    - Always use Gemini LLM for extraction (slow, api dependent)",
     )
     parser.add_argument(
         "--parallel",
