@@ -224,6 +224,8 @@ venv\Scripts\python.exe web_server.py
 
 Then open **http://localhost:5000** in your browser.
 
+### 3. Run via Tunnel at https://e544ce5e7adc45.lhr.life/
+
 #### UI Features
 
 | Feature | Details |
